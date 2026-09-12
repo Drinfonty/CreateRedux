@@ -55,6 +55,30 @@ public class AllBlockEntityTypes {
 			() -> new Block[]{AllBlocks.MECHANICAL_PISTON.get()}
 	);
 
+	public static final RegistryEntry<BlockEntityType<com.drinfonty.create_redux.content.logistics.depot.DepotBlockEntity>> DEPOT = CreateRegistrate.registerBlockEntityType(
+			"depot",
+			com.drinfonty.create_redux.content.logistics.depot.DepotBlockEntity::new,
+			() -> new Block[]{AllBlocks.DEPOT.get()}
+	);
+
+	public static final RegistryEntry<BlockEntityType<com.drinfonty.create_redux.content.kinetics.belt.BeltBlockEntity>> BELT = CreateRegistrate.registerBlockEntityType(
+			"belt",
+			com.drinfonty.create_redux.content.kinetics.belt.BeltBlockEntity::new,
+			() -> new Block[]{AllBlocks.BELT.get()}
+	);
+
+	public static final RegistryEntry<BlockEntityType<com.drinfonty.create_redux.content.logistics.chute.ChuteBlockEntity>> CHUTE = CreateRegistrate.registerBlockEntityType(
+			"chute",
+			com.drinfonty.create_redux.content.logistics.chute.ChuteBlockEntity::new,
+			() -> new Block[]{AllBlocks.CHUTE.get()}
+	);
+
+	public static final RegistryEntry<BlockEntityType<com.drinfonty.create_redux.content.logistics.funnel.FunnelBlockEntity>> FUNNEL = CreateRegistrate.registerBlockEntityType(
+			"funnel",
+			com.drinfonty.create_redux.content.logistics.funnel.FunnelBlockEntity::new,
+			() -> new Block[]{AllBlocks.ANDESITE_FUNNEL.get(), AllBlocks.BRASS_FUNNEL.get()}
+	);
+
 	public static void register() {
 		// triggers classloading
 	}

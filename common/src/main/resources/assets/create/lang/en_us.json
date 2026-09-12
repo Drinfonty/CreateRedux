@@ -9,5 +9,10 @@
   "block.create.mechanical_bearing": "Mechanical Bearing",
   "block.create.windmill_bearing": "Windmill Bearing",
   "block.create.mechanical_piston": "Mechanical Piston",
-  "block.create.piston_extension_pole": "Piston Extension Pole"
+  "block.create.piston_extension_pole": "Piston Extension Pole",
+  "block.create.depot": "Depot",
+  "block.create.belt": "Mechanical Belt",
+  "block.create.chute": "Chute",
+  "block.create.andesite_funnel": "Andesite Funnel",
+  "block.create.brass_funnel": "Brass Funnel"
 }
