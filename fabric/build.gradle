@@ -1,5 +1,5 @@
 plugins {
-	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+	id 'net.fabricmc.fabric-loom-remap'
 	id 'com.modrinth.minotaur'
 	id 'net.darkhax.curseforgegradle'
 }
@@ -19,9 +19,10 @@ loom {
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-	compileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
+	mappings loom.officialMojangMappings()
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+	modCompileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
 
 	implementation project(":common")
 }
@@ -63,83 +64,28 @@ jar {
 
 	from project(":common").sourceSets.main.output
 
-	if (rootProject.file("LICENSE").exists()) {
-		from(rootProject.file("LICENSE")) {
-			rename { "${it}_$projectName" }
+	if (rootProject.file("LICENSE.md").exists()) {
+		from(rootProject.file("LICENSE.md")) {
+			rename { "${it}_$projectName"}
 		}
 	}
 }
 
-// Automatically copy built jar to release directory in the project root
-tasks.register('copyJarToRelease', Copy) {
-	from tasks.named('jar')
-	into "${project.rootDir}/release"
+remapJar {
+	archiveFileName = "create-${project.mod_version}-${project.mc_version_suffix}-fabric.jar"
+}
 
-	mustRunAfter tasks.named('jar')
+tasks.register('copyJarToRelease', Copy) {
+	from tasks.named('remapJar')
+	into "${project.rootDir}/release"
 }
 
 tasks.named('build') {
 	finalizedBy('copyJarToRelease')
 }
 
-afterEvaluate {
-	tasks.named('runClient') {
-		if (project.hasProperty('testJar')) {
-			dependsOn(tasks.named('jar'))
-			setClasspath(classpath.filter { File file ->
-				!file.path.contains("common/build/classes") &&
-				!file.path.contains("common/build/resources") &&
-				!file.path.contains("fabric/build/classes") &&
-				!file.path.contains("fabric/build/resources")
-			})
-			classpath.from(tasks.named('jar'))
-		} else {
-			systemProperty 'create.debug', 'true'
-		}
+loom {
+	mixin {
+		useLegacyMixinAp = false
 	}
-}
-
-modrinth {
-	token = rootProject.getModrinthToken()
-	projectId = project.modrinth_project_id
-
-	debugMode = project.hasProperty('publishDebug')
-	versionNumber = "${project.mod_version}-${project.mc_version_suffix}-fabric"
-	versionName = "Create ${project.mod_version} (Fabric)"
-	versionType = "release"
-	uploadFile = layout.buildDirectory.file("libs/create-${project.mod_version}-${project.mc_version_suffix}-fabric.jar")
-	gameVersions = project.modrinth_game_versions.split(",") as List
-	loaders = ["fabric"]
-
-	def notesFile = rootProject.file("release/release-note-${project.mod_version}.md")
-	if (notesFile.exists()) {
-		changelog = notesFile.text
-	}
-
-	dependencies {
-		required.project "P7dR8mSH" // Fabric API
-	}
-}
-
-tasks.register("curseforge", net.darkhax.curseforgegradle.TaskPublishCurseForge) {
-	apiToken = rootProject.getCurseForgeToken()
-
-	debugMode = project.hasProperty('publishDebug')
-
-	def mainFile = upload(project.curseforge_project_id, tasks.named('jar'))
-	mainFile.displayName = "Create ${project.mod_version} (Fabric)"
-	mainFile.releaseType = "release"
-	mainFile.changelogType = "markdown"
-
-	project.curseforge_game_versions.split(",").each {
-		mainFile.addGameVersion(it)
-	}
-	mainFile.addModLoader("Fabric")
-
-	def notesFile = rootProject.file("release/release-note-${project.mod_version}.md")
-	if (notesFile.exists()) {
-		mainFile.changelog = notesFile.text
-	}
-
-	mainFile.addRequirement("fabric-api")
 }

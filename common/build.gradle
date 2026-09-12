@@ -1,9 +1,10 @@
 plugins {
-	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+	id 'net.fabricmc.fabric-loom-remap'
 }
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings loom.officialMojangMappings()
 	compileOnly "org.spongepowered:mixin:0.8.7"
 
 	// Loom's Minecraft jar annotates client-only classes with
@@ -50,4 +51,8 @@ loom {
 	mixin {
 		useLegacyMixinAp = false
 	}
+}
+
+remapJar {
+	targetNamespace = "named"
 }

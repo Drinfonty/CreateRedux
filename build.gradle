@@ -1,5 +1,5 @@
 plugins {
-	id 'net.fabricmc.fabric-loom' version "${loom_version}" apply false
+	id 'net.fabricmc.fabric-loom-remap' version "${loom_version}" apply false
 	id 'maven-publish'
 	id 'com.modrinth.minotaur' version '2.9.0' apply false
 	id 'net.darkhax.curseforgegradle' version '1.3.33' apply false
@@ -15,6 +15,8 @@ rootProject.file('gradle/mod.properties').withInputStream { modProperties.load(i
 modProperties.each { k, v -> rootProject.ext.set(k as String, v as String) }
 
 allprojects {
+	// Without this project.version is "unspecified", which is what fabric.mod.json's
+	// ${version} placeholder was being expanded to.
 	version = rootProject.mod_version
 	group = rootProject.maven_group
 
