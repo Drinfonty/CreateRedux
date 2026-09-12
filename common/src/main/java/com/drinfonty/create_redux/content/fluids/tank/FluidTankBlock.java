@@ -1,5 +1,6 @@
 package com.drinfonty.create_redux.content.fluids.tank;
 
+import com.drinfonty.create_redux.platform.PlayerMsgUtil;
 import com.drinfonty.create_redux.platform.transfer.FluidStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -66,9 +67,9 @@ public class FluidTankBlock extends Block implements EntityBlock {
 			if (!level.isClientSide() && player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
 				FluidStack fluid = tank.getFluid();
 				if (fluid.isEmpty()) {
-					player.sendOverlayMessage(Component.literal("Tank is empty (0 / " + tank.getCapacity() + " mB)"));
+					PlayerMsgUtil.sendOverlay(player, Component.literal("Tank is empty (0 / " + tank.getCapacity() + " mB)"));
 				} else {
-					player.sendOverlayMessage(Component.literal("Fluid: " + fluid.getAmount() + " / " + tank.getCapacity() + " mB"));
+					PlayerMsgUtil.sendOverlay(player, Component.literal("Fluid: " + fluid.getAmount() + " / " + tank.getCapacity() + " mB"));
 				}
 				return InteractionResult.SUCCESS;
 			}
