@@ -29,6 +29,11 @@ public class AllCreativeModeTabs {
 						if (AllBlocks.CHUTE != null) output.accept(AllBlocks.CHUTE.get());
 						if (AllBlocks.ANDESITE_FUNNEL != null) output.accept(AllBlocks.ANDESITE_FUNNEL.get());
 						if (AllBlocks.BRASS_FUNNEL != null) output.accept(AllBlocks.BRASS_FUNNEL.get());
+						if (AllBlocks.FLUID_PIPE != null) output.accept(AllBlocks.FLUID_PIPE.get());
+						if (AllBlocks.MECHANICAL_PUMP != null) output.accept(AllBlocks.MECHANICAL_PUMP.get());
+						if (AllBlocks.FLUID_TANK != null) output.accept(AllBlocks.FLUID_TANK.get());
+						if (AllBlocks.SPOUT != null) output.accept(AllBlocks.SPOUT.get());
+						if (AllBlocks.HOSE_PULLEY != null) output.accept(AllBlocks.HOSE_PULLEY.get());
 					})
 					.build()
 	);

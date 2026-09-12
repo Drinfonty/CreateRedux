@@ -1,0 +1,21 @@
+{
+  "textures": {
+    "particle": "minecraft:block/copper_block",
+    "frame": "minecraft:block/copper_block",
+    "glass": "minecraft:block/glass"
+  },
+  "elements": [
+    {
+      "from": [1, 0, 1],
+      "to": [15, 16, 15],
+      "faces": {
+        "north": {"uv": [1, 0, 15, 16], "texture": "#glass"},
+        "south": {"uv": [1, 0, 15, 16], "texture": "#glass"},
+        "west": {"uv": [1, 0, 15, 16], "texture": "#glass"},
+        "east": {"uv": [1, 0, 15, 16], "texture": "#glass"},
+        "up": {"uv": [1, 1, 15, 15], "texture": "#frame"},
+        "down": {"uv": [1, 1, 15, 15], "texture": "#frame"}
+      }
+    }
+  ]
+}

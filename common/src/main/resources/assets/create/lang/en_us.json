@@ -14,5 +14,10 @@
   "block.create.belt": "Mechanical Belt",
   "block.create.chute": "Chute",
   "block.create.andesite_funnel": "Andesite Funnel",
-  "block.create.brass_funnel": "Brass Funnel"
+  "block.create.brass_funnel": "Brass Funnel",
+  "block.create.fluid_pipe": "Fluid Pipe",
+  "block.create.mechanical_pump": "Mechanical Pump",
+  "block.create.fluid_tank": "Fluid Tank",
+  "block.create.spout": "Spout",
+  "block.create.hose_pulley": "Hose Pulley"
 }

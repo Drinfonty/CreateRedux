@@ -90,6 +90,31 @@ public class AllBlocks {
 			props -> new com.drinfonty.create_redux.content.logistics.funnel.BrassFunnelBlock(props.strength(1.5f).sound(SoundType.METAL).noOcclusion())
 	);
 
+	public static final RegistryEntry<com.drinfonty.create_redux.content.fluids.pipe.FluidPipeBlock> FLUID_PIPE = CreateRegistrate.registerBlock(
+			"fluid_pipe",
+			props -> new com.drinfonty.create_redux.content.fluids.pipe.FluidPipeBlock(props.strength(1.5f).sound(SoundType.COPPER).noOcclusion())
+	);
+
+	public static final RegistryEntry<com.drinfonty.create_redux.content.fluids.pump.MechanicalPumpBlock> MECHANICAL_PUMP = CreateRegistrate.registerBlock(
+			"mechanical_pump",
+			props -> new com.drinfonty.create_redux.content.fluids.pump.MechanicalPumpBlock(props.strength(2.0f).sound(SoundType.COPPER).noOcclusion())
+	);
+
+	public static final RegistryEntry<com.drinfonty.create_redux.content.fluids.tank.FluidTankBlock> FLUID_TANK = CreateRegistrate.registerBlock(
+			"fluid_tank",
+			props -> new com.drinfonty.create_redux.content.fluids.tank.FluidTankBlock(props.strength(2.0f).sound(SoundType.GLASS).noOcclusion())
+	);
+
+	public static final RegistryEntry<com.drinfonty.create_redux.content.fluids.spout.SpoutBlock> SPOUT = CreateRegistrate.registerBlock(
+			"spout",
+			props -> new com.drinfonty.create_redux.content.fluids.spout.SpoutBlock(props.strength(2.0f).sound(SoundType.COPPER).noOcclusion())
+	);
+
+	public static final RegistryEntry<com.drinfonty.create_redux.content.fluids.hosePulley.HosePulleyBlock> HOSE_PULLEY = CreateRegistrate.registerBlock(
+			"hose_pulley",
+			props -> new com.drinfonty.create_redux.content.fluids.hosePulley.HosePulleyBlock(props.strength(2.0f).sound(SoundType.COPPER).noOcclusion())
+	);
+
 	public static void register() {
 		KineticStressRegistry.registerCapacity(HAND_CRANK.get(), 256.0f);
 		KineticStressRegistry.registerCapacity(WATER_WHEEL.get(), 256.0f);
@@ -101,5 +126,7 @@ public class AllBlocks {
 		KineticStressRegistry.registerImpact(MECHANICAL_BEARING.get(), 4.0f);
 		KineticStressRegistry.registerImpact(MECHANICAL_PISTON.get(), 4.0f);
 		KineticStressRegistry.registerImpact(BELT.get(), 1.0f);
+		KineticStressRegistry.registerImpact(MECHANICAL_PUMP.get(), 4.0f);
+		KineticStressRegistry.registerImpact(HOSE_PULLEY.get(), 4.0f);
 	}
 }
