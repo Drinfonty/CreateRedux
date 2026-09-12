@@ -7,6 +7,7 @@ import net.neoforged.fml.common.Mod;
 @Mod(Create.ID)
 public class CreateNeoForge {
 	public CreateNeoForge(IEventBus modEventBus) {
+		NeoForgeRegistryHelper.init(modEventBus);
 		Create.init();
 	}
 }

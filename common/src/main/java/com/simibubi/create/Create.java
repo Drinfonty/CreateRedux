@@ -11,6 +11,9 @@ public class Create {
 
 	public static void init() {
 		LOGGER.info("Initializing Create Redux (Multiplatform)");
+		AllBlocks.register();
+		AllBlockEntityTypes.register();
+		AllCreativeModeTabs.register();
 	}
 
 	public static Identifier asResource(String path) {

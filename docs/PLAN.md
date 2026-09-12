@@ -91,11 +91,10 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
   - Defined `StorageProvider<T>`, `FluidStack`, and `TransferUtil` in `common/.../platform/transfer/`.
   - Fabric: Implemented `FabricTransferHelper` mapping to Fabric Transfer API (`ItemStorage.SIDED`, `FluidStorage.SIDED`, `Transaction.openOuter()`).
   - NeoForge: Implemented `NeoForgeTransferHelper` mapping to modern NeoForge 26.2 Transfer API (`Capabilities.Item.BLOCK`, `Capabilities.Fluid.BLOCK`, `ResourceHandler`, `Transaction.openRoot()`).
-- [ ] **Step 1.2: Content Registration Engine (`CreateRegistrate`)**
-  - Implement a streamlined registration abstraction wrapping vanilla registry mechanisms.
-  - Support registration of Blocks, BlockEntityTypes, Items, Fluids, EntityTypes, SoundEvents, ParticleTypes, and RecipeTypes.
-  - Wire Fabric registry calls via `BuiltInRegistries` during `ModInitializer`.
-  - Wire NeoForge registry calls via `RegisterEvent` / `DeferredRegister`.
+- [x] **Step 1.2: Content Registration Engine (`CreateRegistrate`)**
+  - Implemented multiplatform registration engine via `CreateRegistrate` and `RegistryHelper` service loader.
+  - Fabric: Directly registers blocks, items, block entities, and creative tabs into `BuiltInRegistries`.
+  - NeoForge: Binds to `DeferredRegister` instances (`BLOCKS`, `ITEMS`, `BLOCK_ENTITIES`, `CREATIVE_TABS`).
 - [x] **Step 1.3: Unified Networking Layer**
   - Implemented network packet protocol using Minecraft's native `CustomPacketPayload`.
   - Provided `PlatformNetworking` helper for C2S and S2C dispatch:
@@ -105,9 +104,9 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
   - Define config categories: `KineticsConfig`, `LogisticsConfig`, `SchematicsConfig`, `ClientConfig`, `WorldgenConfig`.
   - Hook into NeoForge's native `ModConfig`.
   - Hook into Fabric via standard JSON/TOML parser with hot-reloading capability.
-- [ ] **Step 1.5: Access Widener & Transformer Pipeline**
-  - Consolidate class/method access requirements.
-  - Generate `create.accesswidener` for Fabric Loom and `accesstransformer.cfg` for NeoForge.
+- [x] **Step 1.5: Access Widener & Transformer Pipeline**
+  - Configured `common/src/main/resources/create.accesswidener` using modern `official` namespace for Fabric Loom.
+  - Configured `neoforge/src/main/resources/META-INF/accesstransformer.cfg` for NeoForge ModDev.
 
 ---
 
@@ -132,10 +131,13 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
 ### Phase 3: Subsystem Migration & Loader Binding
 
 #### Milestone 3.1: Kinetics Engine & Stress Network
-- [ ] Migrate `KineticBlock`, `KineticBlockEntity`, and rotational network propagation math.
+- [x] Implement foundational `KineticBlock` and `KineticBlockEntity` base classes.
+- [x] Implement `ShaftBlock` and `ShaftBlockEntity` with rotational propagation along axis.
+- [x] Implement `CogWheelBlock` (small and large variants) and directional transmission.
+- [x] Register `AllBlocks`, `AllBlockEntityTypes`, and `AllCreativeModeTabs`.
+- [x] Implement modern 26.2 NBT serialization via `ValueOutput` / `ValueInput` and block removal via `affectNeighborsAfterRemoval`.
 - [ ] Implement `StressImpactRegistry` and `StressCapacityRegistry` in `:common`.
 - [ ] Port rotational synchronization packets (`KineticBlockEntity` state sync).
-- [ ] Verify shaft, cogwheel, gearbox, clutch, gearshift, and water wheel rotational calculations on both loaders.
 
 #### Milestone 3.2: Contraptions & Physical Movement
 - [ ] Migrate contraption assembly logic: Mechanical Piston, Windmill Bearing, Mechanical Bearing, Gantry Carriage, Cart Assembler.

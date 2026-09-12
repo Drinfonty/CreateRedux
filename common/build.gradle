@@ -46,6 +46,7 @@ java {
 }
 
 loom {
+	accessWidenerPath = file("src/main/resources/create.accesswidener")
 	mixin {
 		useLegacyMixinAp = false
 	}

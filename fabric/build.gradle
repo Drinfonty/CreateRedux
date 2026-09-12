@@ -6,6 +6,7 @@ plugins {
 
 loom {
 	splitEnvironmentSourceSets()
+	accessWidenerPath = project(":common").file("src/main/resources/create.accesswidener")
 
 	mods {
 		"create" {

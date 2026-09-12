@@ -23,6 +23,7 @@
 			"com.simibubi.create.platform.fabric.CreateFabricClient"
 		]
 	},
+	"accessWidener": "create.accesswidener",
 	"mixins": [
 		"create.mixins.json"
 	],
