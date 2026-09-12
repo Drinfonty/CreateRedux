@@ -71,7 +71,7 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
     mod_id=create
     mod_name=Create
     mod_version=6.1.0
-    maven_group=com.simibubi.create
+    maven_group=com.drinfonty.create_redux
     modrinth_project_id=create
     curseforge_project_id=328085
     ```

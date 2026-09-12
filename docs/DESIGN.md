@@ -88,7 +88,7 @@ CreateRedux/
 │   ├── build.gradle                  # Common Loom configuration
 │   └── src/
 │       ├── main/
-│       │   ├── java/com/simibubi/create/
+│       │   ├── java/com/drinfonty/create_redux/
 │       │   │   ├── api/              # Public Create API
 │       │   │   ├── content/          # Contraptions, Kinetics, Logistics, Trains, Fluids
 │       │   │   ├── foundation/       # Utility, Math, Common Rendering, Mixins
@@ -100,7 +100,7 @@ CreateRedux/
 │   ├── build.gradle                  # Fabric Loom, Fabric dependencies, Jar packaging
 │   └── src/
 │       ├── main/
-│       │   ├── java/com/simibubi/create/platform/fabric/  # PAL Fabric implementations
+│       │   ├── java/com/drinfonty/create_redux/platform/fabric/  # PAL Fabric implementations
 │       │   └── resources/
 │       │       ├── fabric.mod.json
 │       │       └── create.accesswidener
@@ -108,7 +108,7 @@ CreateRedux/
 │   ├── build.gradle                  # NeoForged ModDev configuration, Jar packaging
 │   └── src/
 │       ├── main/
-│       │   ├── java/com/simibubi/create/platform/neoforge/ # PAL NeoForge implementations
+│       │   ├── java/com/drinfonty/create_redux/platform/neoforge/ # PAL NeoForge implementations
 │       │   └── resources/
 │       │       ├── META-INF/
 │       │       │   ├── neoforge.mods.toml
@@ -137,7 +137,7 @@ CreateRedux strictly follows the **RedFX merge-hub model**:
 
 ### 4.2 Branch Responsibility Matrix
 - **`main` (Version-Agnostic Hub)**:
-  - Holds `gradle/mod.properties` (`mod_version=6.1.0`, `maven_group=com.simibubi.create`).
+  - Holds `gradle/mod.properties` (`mod_version=6.1.0`, `maven_group=com.drinfonty.create_redux`).
   - Holds all platform-agnostic gameplay code in `common/src/main/java`.
   - Holds all assets, models, sounds, textures, Ponder storyboards, and localization in `common/src/main/resources`.
   - Holds all unit tests in `common/src/test`.
@@ -152,7 +152,7 @@ CreateRedux strictly follows the **RedFX merge-hub model**:
 
 ## 5. Platform Abstraction Layer (PAL)
 
-The core innovation of CreateRedux is replacing heavyweight emulation libraries with a clean, low-footprint PAL defined in `com.simibubi.create.platform`.
+The core innovation of CreateRedux is replacing heavyweight emulation libraries with a clean, low-footprint PAL defined in `com.drinfonty.create_redux.platform`.
 
 ### 5.1 Item & Fluid Transfer Abstraction
 Item handling (belts, chutes, funnels, mechanical arms, vaults) and fluid handling (pipes, pumps, fluid tanks, spouts, hose pulleys) are abstracted through unified storage handles:

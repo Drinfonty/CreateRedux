@@ -17,10 +17,10 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.simibubi.create.platform.fabric.CreateFabric"
+			"com.drinfonty.create_redux.platform.fabric.CreateFabric"
 		],
 		"client": [
-			"com.simibubi.create.platform.fabric.CreateFabricClient"
+			"com.drinfonty.create_redux.platform.fabric.CreateFabricClient"
 		]
 	},
 	"accessWidener": "create.accesswidener",
