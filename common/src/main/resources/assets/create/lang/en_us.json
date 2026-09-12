@@ -5,5 +5,9 @@
   "block.create.large_cogwheel": "Large Cogwheel",
   "block.create.hand_crank": "Hand Crank",
   "block.create.water_wheel": "Water Wheel",
-  "block.create.gearbox": "Gearbox"
+  "block.create.gearbox": "Gearbox",
+  "block.create.mechanical_bearing": "Mechanical Bearing",
+  "block.create.windmill_bearing": "Windmill Bearing",
+  "block.create.mechanical_piston": "Mechanical Piston",
+  "block.create.piston_extension_pole": "Piston Extension Pole"
 }

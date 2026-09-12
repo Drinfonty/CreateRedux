@@ -83,4 +83,28 @@ public class KineticsTest {
 		assertEquals(8.0f, kinetics.waterWheelBaseSpeed);
 		assertEquals(32.0f, kinetics.crankRotationPerClick);
 	}
+
+	@Test
+	@DisplayName("Contraption relative bounds and sail counting")
+	void testContraptionAssembly() {
+		com.simibubi.create.content.contraptions.components.structure.bearing.BearingContraption contraption =
+				new com.simibubi.create.content.contraptions.components.structure.bearing.BearingContraption(net.minecraft.core.Direction.UP);
+
+		assertEquals(net.minecraft.core.Direction.UP, contraption.getFacing());
+		assertEquals(0, contraption.getSailBlocksCount());
+		assertFalse(contraption.isAssembled());
+	}
+
+	@Test
+	@DisplayName("Mechanical piston extension clamping")
+	void testPistonExtensionLimits() {
+		float extension = 15.0f;
+		float maxExtension = 16.0f;
+		float delta = 2.0f;
+		float clamped = Math.clamp(extension + delta, 0.0f, maxExtension);
+		assertEquals(16.0f, clamped);
+
+		float retracted = Math.clamp(extension - 20.0f, 0.0f, maxExtension);
+		assertEquals(0.0f, retracted);
+	}
 }

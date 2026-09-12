@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "create:block/mechanical_piston",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "create:block/mechanical_piston",
+      "x": 90
+    },
+    "facing=north": {
+      "model": "create:block/mechanical_piston"
+    },
+    "facing=south": {
+      "model": "create:block/mechanical_piston",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "create:block/mechanical_piston",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "create:block/mechanical_piston",
+      "y": 90
+    }
+  }
+}
