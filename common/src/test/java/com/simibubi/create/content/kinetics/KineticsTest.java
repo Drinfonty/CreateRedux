@@ -71,4 +71,16 @@ public class KineticsTest {
 		assertEquals(32.0f, sameAxisSpeed);
 		assertEquals(-32.0f, perpendicularSpeed);
 	}
+
+	@Test
+	@DisplayName("Configuration system defaults and kinetics values")
+	void testConfigurationDefaults() {
+		com.simibubi.create.infrastructure.config.CKinetics kinetics = com.simibubi.create.infrastructure.config.AllConfigs.server();
+		assertNotNull(kinetics);
+		assertEquals(256.0f, kinetics.maxRotationSpeed);
+		assertEquals(1.0f, kinetics.stressCapacityMultiplier);
+		assertEquals(1.0f, kinetics.stressImpactMultiplier);
+		assertEquals(8.0f, kinetics.waterWheelBaseSpeed);
+		assertEquals(32.0f, kinetics.crankRotationPerClick);
+	}
 }

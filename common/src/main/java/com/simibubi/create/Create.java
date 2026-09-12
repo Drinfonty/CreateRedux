@@ -1,5 +1,6 @@
 package com.simibubi.create;
 
+import com.simibubi.create.platform.config.ConfigHelper;
 import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ public class Create {
 
 	public static void init() {
 		LOGGER.info("Initializing Create Redux (Multiplatform)");
+		ConfigHelper.get().registerConfigs();
 		AllBlocks.register();
 		AllBlockEntityTypes.register();
 		AllCreativeModeTabs.register();
