@@ -79,6 +79,36 @@ public class AllBlockEntityTypes {
 			() -> new Block[]{AllBlocks.ANDESITE_FUNNEL.get(), AllBlocks.BRASS_FUNNEL.get()}
 	);
 
+	public static final RegistryEntry<BlockEntityType<com.drinfonty.create_redux.content.fluids.pipe.FluidPipeBlockEntity>> FLUID_PIPE = CreateRegistrate.registerBlockEntityType(
+			"fluid_pipe",
+			com.drinfonty.create_redux.content.fluids.pipe.FluidPipeBlockEntity::new,
+			() -> new Block[]{AllBlocks.FLUID_PIPE.get()}
+	);
+
+	public static final RegistryEntry<BlockEntityType<com.drinfonty.create_redux.content.fluids.pump.MechanicalPumpBlockEntity>> MECHANICAL_PUMP = CreateRegistrate.registerBlockEntityType(
+			"mechanical_pump",
+			com.drinfonty.create_redux.content.fluids.pump.MechanicalPumpBlockEntity::new,
+			() -> new Block[]{AllBlocks.MECHANICAL_PUMP.get()}
+	);
+
+	public static final RegistryEntry<BlockEntityType<com.drinfonty.create_redux.content.fluids.tank.FluidTankBlockEntity>> FLUID_TANK = CreateRegistrate.registerBlockEntityType(
+			"fluid_tank",
+			com.drinfonty.create_redux.content.fluids.tank.FluidTankBlockEntity::new,
+			() -> new Block[]{AllBlocks.FLUID_TANK.get()}
+	);
+
+	public static final RegistryEntry<BlockEntityType<com.drinfonty.create_redux.content.fluids.spout.SpoutBlockEntity>> SPOUT = CreateRegistrate.registerBlockEntityType(
+			"spout",
+			com.drinfonty.create_redux.content.fluids.spout.SpoutBlockEntity::new,
+			() -> new Block[]{AllBlocks.SPOUT.get()}
+	);
+
+	public static final RegistryEntry<BlockEntityType<com.drinfonty.create_redux.content.fluids.hosePulley.HosePulleyBlockEntity>> HOSE_PULLEY = CreateRegistrate.registerBlockEntityType(
+			"hose_pulley",
+			com.drinfonty.create_redux.content.fluids.hosePulley.HosePulleyBlockEntity::new,
+			() -> new Block[]{AllBlocks.HOSE_PULLEY.get()}
+	);
+
 	public static void register() {
 		// triggers classloading
 	}
