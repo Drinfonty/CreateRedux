@@ -1,10 +1,11 @@
 package com.simibubi.create.platform.fabric;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 
 public class CreateFabricClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
-		// Client initialization logic
+		FabricNetworking.clientSender = ClientPlayNetworking::send;
 	}
 }
