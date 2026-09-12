@@ -59,14 +59,14 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
 ### Phase 0: Project Bootstrap & Multi-Module Toolchain Setup
 **Goal**: Initialize the CreateRedux repository with the RedFX Gradle build structure, git repository, and multi-project configuration.
 
-- [ ] **Step 0.1: Git Repository Initialization**
-  - Initialize local git repo in `CreateRedux`.
-  - Create initial commit with `.gitignore`, `.editorconfig`, and directory skeletons (`common/`, `fabric/`, `neoforge/`, `gradle/`, `docs/`, `release/`).
-- [ ] **Step 0.2: Gradle Multi-Project Configuration**
-  - Configure `settings.gradle` including `:common`, `:fabric`, and `:neoforge`.
-  - Configure Foojay toolchain resolver convention plugin.
-- [ ] **Step 0.3: Mod Metadata Separation**
-  - Create `gradle/mod.properties` on `main`:
+- [x] **Step 0.1: Git Repository Initialization**
+  - Initialized local git repo in `CreateRedux` on `main`, tracked to `origin/main`.
+  - Added `.gitignore`, `docs/DESIGN.md`, `docs/PLAN.md`, and `LICENSE.md`.
+- [x] **Step 0.2: Gradle Multi-Project Configuration**
+  - Configured `settings.gradle` including `:common`, `:fabric`, and `:neoforge`.
+  - Configured Foojay toolchain resolver convention plugin.
+- [x] **Step 0.3: Mod Metadata Separation**
+  - Created `gradle/mod.properties` on `main`:
     ```properties
     mod_id=create
     mod_name=Create
@@ -75,32 +75,32 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
     modrinth_project_id=create
     curseforge_project_id=328085
     ```
-  - Setup root `build.gradle` to load `gradle/mod.properties` into `rootProject.ext`.
-- [ ] **Step 0.4: Subproject Build Scripts**
+  - Root `build.gradle` loads `gradle/mod.properties` into `rootProject.ext`.
+- [x] **Step 0.4: Subproject Build Scripts**
   - Setup `common/build.gradle` using Fabric Loom with `useLegacyMixinAp = false`.
-  - Setup `fabric/build.gradle` with Fabric Loader, Fabric API, ModMenu, and packaging `:common` sources.
+  - Setup `fabric/build.gradle` with Fabric Loader, Fabric API, and packaging `:common` sources.
   - Setup `neoforge/build.gradle` using `net.neoforged.moddev`, packaging `:common` sources.
-  - Setup staging tasks (`copyJarToRelease`) targeting the root `release/` folder.
+  - Setup staging tasks (`copyJarToRelease`) targeting the root `release/` folder. Verified `./gradlew build` generates both jars.
 
 ---
 
 ### Phase 1: Platform Abstraction Layer (PAL) Foundation
 **Goal**: Implement the core abstraction layer in `:common` and its concrete bindings in `:fabric` and `:neoforge`.
 
-- [ ] **Step 1.1: Storage & Transfer Abstraction (`TransferUtil`)**
-  - Define `StorageProvider<T>`, `FluidStack`, and `ItemFilter` in `common/.../platform/transfer/`.
-  - Fabric: Implement `FabricTransferHelper` mapping to Fabric Transfer API (`ItemStorage.SIDED`, `FluidStorage.SIDED`, `Transaction`).
-  - NeoForge: Implement `NeoForgeTransferHelper` mapping to `Capabilities.ItemHandler.BLOCK` and `Capabilities.FluidHandler.BLOCK`.
+- [x] **Step 1.1: Storage & Transfer Abstraction (`TransferUtil`)**
+  - Defined `StorageProvider<T>`, `FluidStack`, and `TransferUtil` in `common/.../platform/transfer/`.
+  - Fabric: Implemented `FabricTransferHelper` mapping to Fabric Transfer API (`ItemStorage.SIDED`, `FluidStorage.SIDED`, `Transaction.openOuter()`).
+  - NeoForge: Implemented `NeoForgeTransferHelper` mapping to modern NeoForge 26.2 Transfer API (`Capabilities.Item.BLOCK`, `Capabilities.Fluid.BLOCK`, `ResourceHandler`, `Transaction.openRoot()`).
 - [ ] **Step 1.2: Content Registration Engine (`CreateRegistrate`)**
   - Implement a streamlined registration abstraction wrapping vanilla registry mechanisms.
   - Support registration of Blocks, BlockEntityTypes, Items, Fluids, EntityTypes, SoundEvents, ParticleTypes, and RecipeTypes.
   - Wire Fabric registry calls via `BuiltInRegistries` during `ModInitializer`.
   - Wire NeoForge registry calls via `RegisterEvent` / `DeferredRegister`.
-- [ ] **Step 1.3: Unified Networking Layer**
-  - Implement network packet protocol using Minecraft's native `CustomPacketPayload`.
-  - Provide `PlatformNetworking` helper for C2S and S2C dispatch:
-    - Fabric: Bind to `ServerPlayNetworking.send` / `ClientPlayNetworking.send` and `PayloadTypeRegistry`.
-    - NeoForge: Bind to `PacketDistributor` and `PayloadRegistrar`.
+- [x] **Step 1.3: Unified Networking Layer**
+  - Implemented network packet protocol using Minecraft's native `CustomPacketPayload`.
+  - Provided `PlatformNetworking` helper for C2S and S2C dispatch:
+    - Fabric: Bound to `ServerPlayNetworking.send` / `ClientPlayNetworking.send`.
+    - NeoForge: Bound to `PacketDistributor` and `ClientPacketDistributor`.
 - [ ] **Step 1.4: Multiplatform Configuration System**
   - Define config categories: `KineticsConfig`, `LogisticsConfig`, `SchematicsConfig`, `ClientConfig`, `WorldgenConfig`.
   - Hook into NeoForge's native `ModConfig`.
@@ -114,13 +114,16 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
 ### Phase 2: Upstream Source Ingestion & Modularization
 **Goal**: Extract Create's gameplay logic from upstream `Creators-of-Create/Create` (`mc1.21.1/dev`), strip direct Forge/NeoForge dependencies, and migrate to `:common`.
 
-- [ ] **Step 2.1: Content Separation Analysis**
+- [ ] **Step 2.1: Content Separation Analysis & Code Licensing**
+  - Verify compliance with upstream MIT code license (retain copyright notice attributing to The Create Team).
   - Categorize upstream packages:
     - Pure Common (move to `:common` immediately): `content/kinetics/`, `content/contraptions/components/`, `content/trains/track/`, `content/schematics/`.
     - Platform-Dependent (extract to PAL): `content/fluids/` (Fluid tanks, hose pulleys), `content/logistics/` (chutes, funnels, belts), `infrastructure/config/`.
-- [ ] **Step 2.2: Asset and Data Migration**
-  - Copy all models, blockstates, textures, sounds, and localization files to `common/src/main/resources/assets/create/`.
-  - Copy recipe definitions and tags to `common/src/main/resources/data/create/`.
+- [ ] **Step 2.2: Clean-Room Asset Generation & Legal Isolation**
+  - Upstream assets (`assets/`) are **All Rights Reserved** by The Create Team; **DO NOT copy** upstream textures, sounds, or proprietary models.
+  - Setup common DataGen pipeline to programmatically generate blockstates, item models, recipe JSONs, and tags into `common/src/main/resources/data/`.
+  - Produce bespoke, clean-room textures, UI icons, and audio assets for CreateRedux (licensed under CC-BY 4.0 / CC0).
+  - Preserve identical asset namespaces and model structure (`create:...`) to guarantee full compatibility with user resource packs.
 - [ ] **Step 2.3: Data Components & Serialization**
   - Adapt Create's item components to modern Minecraft data components (`DataComponentType`, `PatchedDataComponentMap`).
 

@@ -244,7 +244,30 @@ For systems with incompatible GPU drivers, Sodium/Iris/Embeddium shader pipeline
 
 ---
 
-## 7. Minecraft Evolution & Compatibility Matrix
+## 7. Clean-Room Asset Architecture & Licensing Boundaries
+
+### 7.1 Upstream License Analysis
+The upstream Create mod uses a split-licensing model:
+- **Code**: Licensed under the **MIT License**. We are legally entitled to study, port, modify, and distribute the source code across platforms, provided the copyright notice acknowledging **The Create Team / The Creators of Create** is preserved.
+- **Assets (`./src/main/resources/assets/`)**: **All Rights Reserved (ARR)** by The Create Team.
+  - Textures, 3D block/item models, sound effects, and UI pixel art **cannot** be directly copied, redistributed, or bundled in our release artifacts.
+
+### 7.2 Clean-Room Asset Pipeline
+CreateRedux enforces a strict clean-room boundary to ensure 100% legal compliance and IP respect:
+
+1. **Asset Generation & DataGen**:
+   - Programmatically generate blockstates, item models, recipes, and loot tables using common data providers (`BlockStateProvider`, `ItemModelProvider`) executing from the `:common` source set.
+2. **Original Bespoke Textures & Audio**:
+   - Develop clean-room original textures, icons, and audio assets specifically for CreateRedux, licensed under **CC-BY 4.0** or **CC0**.
+   - Focus on distinct, high-clarity visual cues tailored for modern high-resolution displays.
+3. **Resource Pack Interoperability**:
+   - Maintain full namespace parity (`create:...`) so players and server operators who possess legally obtained texture packs (or client-side resource overrides) can seamlessly load custom or community textures without modifying mod binaries.
+4. **CI/CD License & Asset Guard**:
+   - Automated checks during `./gradlew build` ensuring no proprietary upstream binary assets (PNGs, OGGs, proprietary JSON models) are present in the repository or compiled into the published jars.
+
+---
+
+## 8. Minecraft Evolution & Compatibility Matrix
 
 | Aspect | Minecraft 1.21.11 | Minecraft 26.1.x | Minecraft 26.2 | Future (26.3+) |
 | :--- | :--- | :--- | :--- | :--- |
@@ -258,7 +281,7 @@ For systems with incompatible GPU drivers, Sodium/Iris/Embeddium shader pipeline
 
 ---
 
-## 8. Verification & Quality Assurance Strategy
+## 9. Verification & Quality Assurance Strategy
 
 To prevent silent failures and runtime crashes (such as missing mixin targets or unmapped production symbols), CreateRedux adopts the exact pre-publish verification regimen proven in RedFX:
 
