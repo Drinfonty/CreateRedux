@@ -1,0 +1,21 @@
+{
+  "textures": {
+    "particle": "minecraft:block/andesite",
+    "base": "minecraft:block/polished_andesite",
+    "opening": "minecraft:block/cauldron_side"
+  },
+  "elements": [
+    {
+      "from": [2, 2, 0],
+      "to": [14, 14, 8],
+      "faces": {
+        "north": {"uv": [2, 2, 14, 14], "texture": "#opening"},
+        "south": {"uv": [2, 2, 14, 14], "texture": "#base"},
+        "west": {"uv": [0, 2, 8, 14], "texture": "#base"},
+        "east": {"uv": [0, 2, 8, 14], "texture": "#base"},
+        "up": {"uv": [2, 0, 14, 8], "texture": "#base"},
+        "down": {"uv": [2, 0, 14, 8], "texture": "#base"}
+      }
+    }
+  ]
+}

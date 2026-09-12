@@ -65,6 +65,31 @@ public class AllBlocks {
 			props -> new PistonExtensionPoleBlock(props.strength(1.5f).sound(SoundType.WOOD).noOcclusion())
 	);
 
+	public static final RegistryEntry<com.drinfonty.create_redux.content.logistics.depot.DepotBlock> DEPOT = CreateRegistrate.registerBlock(
+			"depot",
+			props -> new com.drinfonty.create_redux.content.logistics.depot.DepotBlock(props.strength(3.0f).sound(SoundType.METAL).noOcclusion())
+	);
+
+	public static final RegistryEntry<com.drinfonty.create_redux.content.kinetics.belt.BeltBlock> BELT = CreateRegistrate.registerBlock(
+			"belt",
+			props -> new com.drinfonty.create_redux.content.kinetics.belt.BeltBlock(props.strength(0.8f).sound(SoundType.WOOL).noOcclusion())
+	);
+
+	public static final RegistryEntry<com.drinfonty.create_redux.content.logistics.chute.ChuteBlock> CHUTE = CreateRegistrate.registerBlock(
+			"chute",
+			props -> new com.drinfonty.create_redux.content.logistics.chute.ChuteBlock(props.strength(2.0f).sound(SoundType.METAL).noOcclusion())
+	);
+
+	public static final RegistryEntry<com.drinfonty.create_redux.content.logistics.funnel.AndesiteFunnelBlock> ANDESITE_FUNNEL = CreateRegistrate.registerBlock(
+			"andesite_funnel",
+			props -> new com.drinfonty.create_redux.content.logistics.funnel.AndesiteFunnelBlock(props.strength(1.5f).sound(SoundType.STONE).noOcclusion())
+	);
+
+	public static final RegistryEntry<com.drinfonty.create_redux.content.logistics.funnel.BrassFunnelBlock> BRASS_FUNNEL = CreateRegistrate.registerBlock(
+			"brass_funnel",
+			props -> new com.drinfonty.create_redux.content.logistics.funnel.BrassFunnelBlock(props.strength(1.5f).sound(SoundType.METAL).noOcclusion())
+	);
+
 	public static void register() {
 		KineticStressRegistry.registerCapacity(HAND_CRANK.get(), 256.0f);
 		KineticStressRegistry.registerCapacity(WATER_WHEEL.get(), 256.0f);
@@ -75,5 +100,6 @@ public class AllBlocks {
 		KineticStressRegistry.registerImpact(GEARBOX.get(), 0.0f);
 		KineticStressRegistry.registerImpact(MECHANICAL_BEARING.get(), 4.0f);
 		KineticStressRegistry.registerImpact(MECHANICAL_PISTON.get(), 4.0f);
+		KineticStressRegistry.registerImpact(BELT.get(), 1.0f);
 	}
 }

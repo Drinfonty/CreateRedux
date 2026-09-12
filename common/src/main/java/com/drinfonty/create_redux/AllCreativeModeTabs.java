@@ -24,6 +24,11 @@ public class AllCreativeModeTabs {
 						if (AllBlocks.WINDMILL_BEARING != null) output.accept(AllBlocks.WINDMILL_BEARING.get());
 						if (AllBlocks.MECHANICAL_PISTON != null) output.accept(AllBlocks.MECHANICAL_PISTON.get());
 						if (AllBlocks.PISTON_EXTENSION_POLE != null) output.accept(AllBlocks.PISTON_EXTENSION_POLE.get());
+						if (AllBlocks.DEPOT != null) output.accept(AllBlocks.DEPOT.get());
+						if (AllBlocks.BELT != null) output.accept(AllBlocks.BELT.get());
+						if (AllBlocks.CHUTE != null) output.accept(AllBlocks.CHUTE.get());
+						if (AllBlocks.ANDESITE_FUNNEL != null) output.accept(AllBlocks.ANDESITE_FUNNEL.get());
+						if (AllBlocks.BRASS_FUNNEL != null) output.accept(AllBlocks.BRASS_FUNNEL.get());
 					})
 					.build()
 	);
