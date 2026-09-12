@@ -1,0 +1,52 @@
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	compileOnly "org.spongepowered:mixin:0.8.7"
+
+	// Loom's Minecraft jar annotates client-only classes with
+	// @net.fabricmc.api.Environment(EnvType.CLIENT). Without fabric-loader on the compile
+	// classpath javac cannot resolve that enum and emits "unknown enum constant
+	// EnvType.CLIENT". compileOnly keeps it out of the runtime classpath and out of published jars.
+	compileOnly "net.fabricmc:fabric-loader:${project.loader_version}"
+
+	testImplementation platform("org.junit:junit-bom:5.13.4")
+	testImplementation "org.junit.jupiter:junit-jupiter"
+	testRuntimeOnly "org.junit.platform:junit-platform-launcher"
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+	testLogging {
+		events "failed"
+		exceptionFormat "full"
+	}
+}
+
+processResources {
+	def mixinCompatLevel = project.mixin_compat_level
+	inputs.property "mixinCompatLevel", mixinCompatLevel
+
+	filesMatching(["create.mixins.json", "create.client.mixins.json"]) {
+		expand "mixinCompatLevel": mixinCompatLevel
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = Integer.parseInt(project.java_version)
+}
+
+java {
+	withSourcesJar()
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(Integer.parseInt(project.java_version))
+	}
+}
+
+loom {
+	mixin {
+		useLegacyMixinAp = false
+	}
+}

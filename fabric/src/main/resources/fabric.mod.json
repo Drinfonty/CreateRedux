@@ -1,0 +1,35 @@
+{
+	"schemaVersion": 1,
+	"id": "create",
+	"version": "${version}",
+	"name": "Create",
+	"description": "Technology that empowers the player.",
+	"authors": [
+		"simibubi",
+		"Create Redux Team"
+	],
+	"contact": {
+		"homepage": "https://createmod.net/",
+		"sources": "https://github.com/Drinfonty/CreateRedux"
+	},
+	"license": "MIT",
+	"icon": "assets/create/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.simibubi.create.platform.fabric.CreateFabric"
+		],
+		"client": [
+			"com.simibubi.create.platform.fabric.CreateFabricClient"
+		]
+	},
+	"mixins": [
+		"create.mixins.json"
+	],
+	"depends": {
+		"fabricloader": "${fabricLoaderDependency}",
+		"minecraft": "${minecraftDependency}",
+		"java": ">=${javaVersion}",
+		"fabric-api": "*"
+	}
+}

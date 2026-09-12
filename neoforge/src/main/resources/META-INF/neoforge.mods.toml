@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+displayURL="https://createmod.net/"
+issueTrackerURL="https://github.com/Drinfonty/CreateRedux/issues"
+license="MIT"
+
+[[mods]]
+modId="create"
+version="${modVersion}"
+displayName="Create"
+description="Technology that empowers the player."
+authors="simibubi, Create Redux Team"
+
+[[dependencies.create]]
+modId="neoforge"
+type="required"
+versionRange="${neoforgeDependency}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.create]]
+modId="minecraft"
+type="required"
+versionRange="${minecraftDependencyMaven}"
+ordering="NONE"
+side="BOTH"
+
+[[mixins]]
+config="create.mixins.json"
