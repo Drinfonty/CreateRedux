@@ -1,0 +1,22 @@
+{
+  "textures": {
+    "particle": "minecraft:block/polished_andesite",
+    "casing": "minecraft:block/polished_andesite",
+    "top": "minecraft:block/piston_top",
+    "bottom": "minecraft:block/piston_bottom"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "north": {"uv": [0, 0, 16, 16], "texture": "#top"},
+        "south": {"uv": [0, 0, 16, 16], "texture": "#bottom"},
+        "west": {"uv": [0, 0, 16, 16], "texture": "#casing"},
+        "east": {"uv": [0, 0, 16, 16], "texture": "#casing"},
+        "up": {"uv": [0, 0, 16, 16], "texture": "#casing"},
+        "down": {"uv": [0, 0, 16, 16], "texture": "#casing"}
+      }
+    }
+  ]
+}

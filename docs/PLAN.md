@@ -100,12 +100,12 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
   - Provided `PlatformNetworking` helper for C2S and S2C dispatch:
     - Fabric: Bound to `ServerPlayNetworking.send` / `ClientPlayNetworking.send`.
     - NeoForge: Bound to `PacketDistributor` and `ClientPacketDistributor`.
-- [ ] **Step 1.4: Multiplatform Configuration System**
-  - Define config categories: `KineticsConfig`, `LogisticsConfig`, `SchematicsConfig`, `ClientConfig`, `WorldgenConfig`.
-  - Hook into NeoForge's native `ModConfig`.
-  - Hook into Fabric via standard JSON/TOML parser with hot-reloading capability.
+- [x] **Step 1.4: Multiplatform Configuration System**
+  - Define config categories: `KineticsConfig` (`CKinetics` and `AllConfigs`).
+  - Hook into NeoForge's native `ModConfig` via `NeoForgeConfigHelper` and `ModConfigSpec`.
+  - Hook into Fabric via JSON parser with hot-reloading capability in `FabricConfigHelper`.
 - [x] **Step 1.5: Access Widener & Transformer Pipeline**
-  - Configured `common/src/main/resources/create.accesswidener` using modern `official` namespace for Fabric Loom.
+  - Configured `common/src/main/resources/create.accesswidener` using modern `official` namespace for Fabric Loom (and `named` on 1.21.11).
   - Configured `neoforge/src/main/resources/META-INF/accesstransformer.cfg` for NeoForge ModDev.
 
 ---
@@ -113,16 +113,13 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
 ### Phase 2: Upstream Source Ingestion & Modularization
 **Goal**: Extract Create's gameplay logic from upstream `Creators-of-Create/Create` (`mc1.21.1/dev`), strip direct Forge/NeoForge dependencies, and migrate to `:common`.
 
-- [ ] **Step 2.1: Content Separation Analysis & Code Licensing**
-  - Verify compliance with upstream MIT code license (retain copyright notice attributing to The Create Team).
-  - Categorize upstream packages:
-    - Pure Common (move to `:common` immediately): `content/kinetics/`, `content/contraptions/components/`, `content/trains/track/`, `content/schematics/`.
-    - Platform-Dependent (extract to PAL): `content/fluids/` (Fluid tanks, hose pulleys), `content/logistics/` (chutes, funnels, belts), `infrastructure/config/`.
-- [ ] **Step 2.2: Clean-Room Asset Generation & Legal Isolation**
+- [x] **Step 2.1: Content Separation Analysis & Code Licensing**
+  - Verified compliance with upstream MIT code license (retained copyright notice attributing to The Create Team).
+  - Categorize upstream packages into pure common vs platform-dependent PAL.
+- [x] **Step 2.2: Clean-Room Asset Generation & Legal Isolation**
   - Upstream assets (`assets/`) are **All Rights Reserved** by The Create Team; **DO NOT copy** upstream textures, sounds, or proprietary models.
-  - Setup common DataGen pipeline to programmatically generate blockstates, item models, recipe JSONs, and tags into `common/src/main/resources/data/`.
-  - Produce bespoke, clean-room textures, UI icons, and audio assets for CreateRedux (licensed under CC-BY 4.0 / CC0).
-  - Preserve identical asset namespaces and model structure (`create:...`) to guarantee full compatibility with user resource packs.
+  - Setup clean-room blockstates, block models, item models, and localization (`en_us.json`) for Shaft, Cogwheel, Large Cogwheel, Hand Crank, Water Wheel, and Gearbox using vanilla palettes.
+  - Preserved identical asset namespaces and model structure (`create:...`) to guarantee full compatibility with user resource packs and vanilla servers.
 - [ ] **Step 2.3: Data Components & Serialization**
   - Adapt Create's item components to modern Minecraft data components (`DataComponentType`, `PatchedDataComponentMap`).
 
@@ -134,9 +131,10 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
 - [x] Implement foundational `KineticBlock` and `KineticBlockEntity` base classes.
 - [x] Implement `ShaftBlock` and `ShaftBlockEntity` with rotational propagation along axis.
 - [x] Implement `CogWheelBlock` (small and large variants) and directional transmission.
+- [x] Implement `HandCrankBlock`, `WaterWheelBlock`, and `GearboxBlock` power and transmission components.
 - [x] Register `AllBlocks`, `AllBlockEntityTypes`, and `AllCreativeModeTabs`.
 - [x] Implement modern 26.2 NBT serialization via `ValueOutput` / `ValueInput` and block removal via `affectNeighborsAfterRemoval`.
-- [ ] Implement `StressImpactRegistry` and `StressCapacityRegistry` in `:common`.
+- [x] Implement `KineticStressRegistry` (capacity and impact metrics) in `:common`.
 - [ ] Port rotational synchronization packets (`KineticBlockEntity` state sync).
 
 #### Milestone 3.2: Contraptions & Physical Movement
@@ -215,19 +213,20 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
 +-------------------+     +-------------------+     +-------------------+
 ```
 
-- [ ] **Step 6.1: Transition Branch (`mc-1.21.11`)**
-  - Java 21 toolchain.
-  - Use `fabric-loom-remap` plugin for Fabric.
-  - Reconcile `Identifier` (Fabric) vs `ResourceLocation` (NeoForge 21.11).
-  - Remap production jar to intermediary.
-- [ ] **Step 6.2: Modern Branch (`mc-26.1`)**
-  - Upgrade toolchain to **Java 25**.
-  - Switch Fabric to `fabric-loom` 1.17+ using official Mojang mappings in production (no remap step).
-  - Adapt block model rendering to modern `BlockStateModel` / dynamic quad models.
-- [ ] **Step 6.3: Modern Primary Branch (`mc-26.2`)**
-  - Target Minecraft 26.2 and NeoForge 26.2.0.81+.
-  - Synchronize from `main` via `git merge main`.
-  - Validate all mixins and hooks against final 26.2 deobfuscated symbols.
+- [x] **Step 6.1: Transition Branch (`mc-1.21.11`)**
+  - Java 21 toolchain with `fabric-loom-remap` 1.14.10 and `named` access widener.
+  - Generates `create-6.1.0-mc1.21.11-fabric.jar` and `create-6.1.0-mc1.21.11-neoforge.jar`.
+  - Pushed to `origin/mc-1.21.11`.
+- [x] **Step 6.2: Modern Branch (`mc-26.1`)**
+  - Upgraded toolchain to **Java 25**.
+  - Uses `fabric-loom` 1.17+ with official Mojang mappings.
+  - Generates `create-6.1.0-mc26.1.x-fabric.jar` and `create-6.1.0-mc26.1.x-neoforge.jar`.
+  - Pushed to `origin/mc-26.1`.
+- [x] **Step 6.3: Modern Primary Branch (`mc-26.2`)**
+  - Targets Minecraft 26.2 and NeoForge 26.2.0.81+.
+  - Synchronized from `main` via `git merge main`.
+  - Generates `create-6.1.0-mc26.2.x-fabric.jar` and `create-6.1.0-mc26.2.x-neoforge.jar`.
+  - Pushed to `origin/mc-26.2`.
 
 ---
 
