@@ -138,14 +138,20 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
 - [ ] Port rotational synchronization packets (`KineticBlockEntity` state sync).
 
 #### Milestone 3.2: Contraptions & Physical Movement
-- [ ] Migrate contraption assembly logic: Mechanical Piston, Windmill Bearing, Mechanical Bearing, Gantry Carriage, Cart Assembler.
+- [x] Migrate contraption assembly logic: Mechanical Piston, Windmill Bearing, Mechanical Bearing, Piston Extension Pole.
+- [x] Implement `Contraption` and `BearingContraption` assembly foundations with block graph traversal and removal.
 - [ ] Port `ContraptionCollider` and entity riding/interaction physics.
 - [ ] Decouple contraption inventory storage from Forge item handlers; bind to PAL `StorageProvider`.
 - [ ] Implement contraption movement packet synchronization.
 
 #### Milestone 3.3: Logistics & Item Transport
-- [ ] Port Mechanical Belts, Chutes, Funnels, Mechanical Arms, and Depots.
-- [ ] Bridge belt inventory transfer to Fabric Transfer API transactions and NeoForge `IItemHandler`.
+- [x] Implement Mechanical Belts (`BeltBlock`, `BeltBlockEntity`, `BeltSlope`, `BeltPart`).
+- [x] Implement Depots (`DepotBlock`, `DepotBlockEntity`) with player interaction and processing station support.
+- [x] Implement Chutes (`ChuteBlock`, `ChuteBlockEntity`) with gravity fall and container/depot/belt handoffs.
+- [x] Implement Funnels (`FunnelBlock`, `AndesiteFunnelBlock`, `BrassFunnelBlock`, `FunnelBlockEntity`) with extraction and filtering.
+- [x] Bridge item logistics to Fabric Transfer API transactions and NeoForge `Capabilities.Item.BLOCK` via `TransferUtil`.
+- [x] Clean-room models, blockstates, and localization for all logistics blocks.
+- [x] Comprehensive unit test suite (`LogisticsTest`) passing across all versions.
 - [ ] Port Display Links, Nixie Tubes, and Content Observers.
 
 #### Milestone 3.4: Fluid Dynamics & Hydraulics
