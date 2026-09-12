@@ -20,7 +20,10 @@ public abstract class KineticBlock extends Block implements EntityBlock {
 
 	public KineticBlock(Properties properties) {
 		super(properties);
-		registerDefaultState(defaultBlockState().setValue(AXIS, Direction.Axis.Y));
+		BlockState defaultState = defaultBlockState();
+		if (defaultState.hasProperty(AXIS)) {
+			registerDefaultState(defaultState.setValue(AXIS, Direction.Axis.Y));
+		}
 	}
 
 	@Override

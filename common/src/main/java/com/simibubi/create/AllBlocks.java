@@ -1,5 +1,9 @@
 package com.simibubi.create;
 
+import com.simibubi.create.content.contraptions.components.structure.bearing.BearingBlock;
+import com.simibubi.create.content.contraptions.components.structure.bearing.WindmillBearingBlock;
+import com.simibubi.create.content.contraptions.components.structure.piston.MechanicalPistonBlock;
+import com.simibubi.create.content.contraptions.components.structure.piston.PistonExtensionPoleBlock;
 import com.simibubi.create.content.kinetics.CogWheelBlock;
 import com.simibubi.create.content.kinetics.GearboxBlock;
 import com.simibubi.create.content.kinetics.HandCrankBlock;
@@ -41,12 +45,35 @@ public class AllBlocks {
 			props -> new GearboxBlock(props.strength(1.5f).sound(SoundType.WOOD).noOcclusion())
 	);
 
+	public static final RegistryEntry<BearingBlock> MECHANICAL_BEARING = CreateRegistrate.registerBlock(
+			"mechanical_bearing",
+			props -> new BearingBlock(props.strength(1.5f).sound(SoundType.WOOD).noOcclusion())
+	);
+
+	public static final RegistryEntry<WindmillBearingBlock> WINDMILL_BEARING = CreateRegistrate.registerBlock(
+			"windmill_bearing",
+			props -> new WindmillBearingBlock(props.strength(1.5f).sound(SoundType.WOOD).noOcclusion())
+	);
+
+	public static final RegistryEntry<MechanicalPistonBlock> MECHANICAL_PISTON = CreateRegistrate.registerBlock(
+			"mechanical_piston",
+			props -> new MechanicalPistonBlock(props.strength(1.5f).sound(SoundType.WOOD).noOcclusion())
+	);
+
+	public static final RegistryEntry<PistonExtensionPoleBlock> PISTON_EXTENSION_POLE = CreateRegistrate.registerBlock(
+			"piston_extension_pole",
+			props -> new PistonExtensionPoleBlock(props.strength(1.5f).sound(SoundType.WOOD).noOcclusion())
+	);
+
 	public static void register() {
 		KineticStressRegistry.registerCapacity(HAND_CRANK.get(), 256.0f);
 		KineticStressRegistry.registerCapacity(WATER_WHEEL.get(), 256.0f);
+		KineticStressRegistry.registerCapacity(WINDMILL_BEARING.get(), 2048.0f);
 		KineticStressRegistry.registerImpact(SHAFT.get(), 0.0f);
 		KineticStressRegistry.registerImpact(COGWHEEL.get(), 0.0f);
 		KineticStressRegistry.registerImpact(LARGE_COGWHEEL.get(), 0.0f);
 		KineticStressRegistry.registerImpact(GEARBOX.get(), 0.0f);
+		KineticStressRegistry.registerImpact(MECHANICAL_BEARING.get(), 4.0f);
+		KineticStressRegistry.registerImpact(MECHANICAL_PISTON.get(), 4.0f);
 	}
 }
