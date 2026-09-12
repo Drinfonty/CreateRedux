@@ -17,6 +17,9 @@ public class AllCreativeModeTabs {
 						if (AllBlocks.SHAFT != null) output.accept(AllBlocks.SHAFT.get());
 						if (AllBlocks.COGWHEEL != null) output.accept(AllBlocks.COGWHEEL.get());
 						if (AllBlocks.LARGE_COGWHEEL != null) output.accept(AllBlocks.LARGE_COGWHEEL.get());
+						if (AllBlocks.HAND_CRANK != null) output.accept(AllBlocks.HAND_CRANK.get());
+						if (AllBlocks.WATER_WHEEL != null) output.accept(AllBlocks.WATER_WHEEL.get());
+						if (AllBlocks.GEARBOX != null) output.accept(AllBlocks.GEARBOX.get());
 					})
 					.build()
 	);

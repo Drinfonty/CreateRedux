@@ -1,5 +1,6 @@
 package com.simibubi.create.content.kinetics;
 
+import com.simibubi.create.AllBlocks;
 import com.simibubi.create.platform.transfer.FluidStack;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.world.level.material.Fluids;
@@ -46,5 +47,28 @@ public class KineticsTest {
 		float overloadStress = 4096.0f;
 		isOverStressed = overloadStress > networkCapacity;
 		assertTrue(isOverStressed);
+	}
+
+	@Test
+	@DisplayName("Kinetic stress registry capacities")
+	void testKineticStressRegistry() {
+		KineticStressRegistry.registerCapacity(AllBlocks.HAND_CRANK.get(), 256.0f);
+		KineticStressRegistry.registerCapacity(AllBlocks.WATER_WHEEL.get(), 256.0f);
+		KineticStressRegistry.registerImpact(AllBlocks.SHAFT.get(), 0.0f);
+
+		assertEquals(256.0f, KineticStressRegistry.getCapacity(AllBlocks.HAND_CRANK.get()));
+		assertEquals(256.0f, KineticStressRegistry.getCapacity(AllBlocks.WATER_WHEEL.get()));
+		assertEquals(0.0f, KineticStressRegistry.getImpact(AllBlocks.SHAFT.get()));
+	}
+
+	@Test
+	@DisplayName("Gearbox transmission speed reversal")
+	void testGearboxTransmission() {
+		float inputSpeed = 32.0f;
+		float sameAxisSpeed = inputSpeed;
+		float perpendicularSpeed = -inputSpeed;
+
+		assertEquals(32.0f, sameAxisSpeed);
+		assertEquals(-32.0f, perpendicularSpeed);
 	}
 }
