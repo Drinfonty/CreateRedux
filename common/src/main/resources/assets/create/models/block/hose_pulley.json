@@ -1,0 +1,21 @@
+{
+  "textures": {
+    "particle": "minecraft:block/copper_block",
+    "casing": "minecraft:block/copper_block",
+    "spool": "minecraft:block/gray_wool"
+  },
+  "elements": [
+    {
+      "from": [1, 0, 1],
+      "to": [15, 16, 15],
+      "faces": {
+        "north": {"uv": [1, 0, 15, 16], "texture": "#casing"},
+        "south": {"uv": [1, 0, 15, 16], "texture": "#casing"},
+        "west": {"uv": [1, 0, 15, 16], "texture": "#casing"},
+        "east": {"uv": [1, 0, 15, 16], "texture": "#casing"},
+        "up": {"uv": [1, 1, 15, 15], "texture": "#casing"},
+        "down": {"uv": [1, 1, 15, 15], "texture": "#spool"}
+      }
+    }
+  ]
+}

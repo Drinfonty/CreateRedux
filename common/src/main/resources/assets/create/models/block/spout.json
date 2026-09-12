@@ -1,0 +1,32 @@
+{
+  "textures": {
+    "particle": "minecraft:block/copper_block",
+    "casing": "minecraft:block/copper_block",
+    "nozzle": "minecraft:block/cauldron_side"
+  },
+  "elements": [
+    {
+      "from": [2, 6, 2],
+      "to": [14, 16, 14],
+      "faces": {
+        "north": {"uv": [2, 0, 14, 10], "texture": "#casing"},
+        "south": {"uv": [2, 0, 14, 10], "texture": "#casing"},
+        "west": {"uv": [2, 0, 14, 10], "texture": "#casing"},
+        "east": {"uv": [2, 0, 14, 10], "texture": "#casing"},
+        "up": {"uv": [2, 2, 14, 14], "texture": "#casing"},
+        "down": {"uv": [2, 2, 14, 14], "texture": "#casing"}
+      }
+    },
+    {
+      "from": [5, 0, 5],
+      "to": [11, 6, 11],
+      "faces": {
+        "north": {"uv": [5, 10, 11, 16], "texture": "#nozzle"},
+        "south": {"uv": [5, 10, 11, 16], "texture": "#nozzle"},
+        "west": {"uv": [5, 10, 11, 16], "texture": "#nozzle"},
+        "east": {"uv": [5, 10, 11, 16], "texture": "#nozzle"},
+        "down": {"uv": [5, 5, 11, 11], "texture": "#nozzle"}
+      }
+    }
+  ]
+}

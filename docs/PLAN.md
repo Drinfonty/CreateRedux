@@ -155,9 +155,11 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
 - [ ] Port Display Links, Nixie Tubes, and Content Observers.
 
 #### Milestone 3.4: Fluid Dynamics & Hydraulics
-- [ ] Port Fluid Pipes, Mechanical Pumps, Fluid Tanks, Spouts, and Hose Pulleys.
-- [ ] Adapt open-ended pipe fluid spill effects to loader-neutral particle spawning.
-- [ ] Reconcile Fabric's 81,000-droplet bucket unit with Create's 1,000 mB standard in fluid pipes and gauges.
+- [x] Port Fluid Pipes, Mechanical Pumps, Fluid Tanks, Spouts, and Hose Pulleys.
+- [x] Adapt open-ended pipe fluid spill effects to loader-neutral particle spawning.
+- [x] Reconcile Fabric's 81,000-droplet bucket unit with Create's 1,000 mB standard in fluid pipes and gauges via PAL `TransferUtil`.
+- [x] Clean-room blockstates, models, item models, and localization for all fluid blocks.
+- [x] Comprehensive unit test suite (`FluidTest`) verifying dynamic connectivity, pumping, tank capacity, and spout processing.
 
 #### Milestone 3.5: Railway Infrastructure & Trains
 - [ ] Port Track placing, Curved Tracks, Track Switching, and Monorail/Dual-rail bogeys.
