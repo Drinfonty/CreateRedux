@@ -25,15 +25,27 @@ public class LogisticsTest {
 	static void setup() {
 		SharedConstants.tryDetectVersion();
 		Bootstrap.bootStrap();
-		net.minecraft.core.component.DataComponentMap defaultComponents =
-				net.minecraft.core.component.DataComponentMap.builder()
-						.set(net.minecraft.core.component.DataComponents.MAX_STACK_SIZE, 64)
-						.build();
-		net.minecraft.core.registries.BuiltInRegistries.ITEM.stream().forEach(item -> {
-			try {
-				item.builtInRegistryHolder().bindComponents(defaultComponents);
-			} catch (Throwable ignored) {}
-		});
+		try {
+			java.lang.reflect.Method bindMethod = null;
+			for (java.lang.reflect.Method m : net.minecraft.core.Holder.Reference.class.getMethods()) {
+				if (m.getName().equals("bindComponents")) {
+					bindMethod = m;
+					break;
+				}
+			}
+			if (bindMethod != null) {
+				final java.lang.reflect.Method method = bindMethod;
+				net.minecraft.core.component.DataComponentMap defaultComponents =
+						net.minecraft.core.component.DataComponentMap.builder()
+								.set(net.minecraft.core.component.DataComponents.MAX_STACK_SIZE, 64)
+								.build();
+				net.minecraft.core.registries.BuiltInRegistries.ITEM.stream().forEach(item -> {
+					try {
+						method.invoke(item.builtInRegistryHolder(), defaultComponents);
+					} catch (Throwable ignored) {}
+				});
+			}
+		} catch (Throwable ignored) {}
 	}
 
 	@Test
