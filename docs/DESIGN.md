@@ -221,6 +221,21 @@ Instead of managing divergent access mechanisms manually:
 - Generate `src/main/resources/create.accesswidener` for Fabric Loom.
 - Generate `src/main/resources/META-INF/accesstransformer.cfg` for NeoForge ModDev.
 
+### 5.5 Server Interoperability & Cross-Play Compatibility (Create / Create-Fly)
+A primary architectural guarantee of CreateRedux is **100% protocol and server interoperability** with official Create (NeoForge) and Create clones such as **Create-Fly** (Fabric):
+
+1. **Mod ID & Registry Parity**:
+   - Mod ID is strictly `create`.
+   - All blocks, items, block entities, entities, and recipe types use the exact upstream namespace `create:<name>` (e.g. `create:shaft`, `create:cogwheel`, `create:large_cogwheel`, `create:wrench`).
+2. **Packet Protocol & Codec Parity**:
+   - Every C2S and S2C network packet registered in CreateRedux matches the channel identifiers (`create:<packet_id>`) and binary byte buffer serialization schemas (`StreamCodec<RegistryFriendlyByteBuf, T>`) of upstream Create and Create-Fly.
+   - A CreateRedux client can seamlessly join a server hosting Create or Create-Fly without packet rejection, buffer underflows, or channel mismatches.
+3. **BlockState & Property Synchronization**:
+   - All block properties (`AXIS`, `FACING`, `WATERLOGGED`, etc.) retain identical names, property types, and default values, ensuring chunk serialization across client and server is fully symmetrical.
+4. **BlockEntity Sync & NBT Schema Parity**:
+   - Network sync tags (`getUpdateTag()`) and save data (`saveAdditional()`) use identical field keys (`Speed`, `Capacity`, `Stress`, `OverStressed`, `Source`, `ScrollValue`, `GeneratedSpeed`).
+   - A player using CreateRedux will perceive the server's kinetic networks, contraptions, and train movements with zero visual desynchronization.
+
 ---
 
 ## 6. Rendering Architecture: Flywheel 1.0 & Multiplatform Shaders

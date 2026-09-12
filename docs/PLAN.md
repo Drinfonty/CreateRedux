@@ -246,6 +246,10 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
 - [ ] **Step 7.3: Publishing Integration**
   - Setup Modrinth Minotaur and CurseForge Gradle tasks in root `build.gradle`.
   - Configure GitHub Releases publishing reading notes from `release/release-note-*.md`.
+- [ ] **Step 7.4: Cross-Play & Server Interoperability Testing (Create / Create-Fly)**
+  - Validate client connection from CreateRedux to dedicated servers hosting official Create (NeoForge) and Create-Fly (Fabric).
+  - Verify handshake without missing registry warnings or packet channel mismatches.
+  - Verify chunk loading, BlockEntity packet sync (`Speed`, `Stress`, `Capacity`), and kinetic interactions.
 
 ---
 
