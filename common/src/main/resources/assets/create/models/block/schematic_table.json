@@ -1,0 +1,66 @@
+{
+  "textures": {
+    "particle": "minecraft:block/oak_planks",
+    "top": "minecraft:block/crafting_table_top",
+    "wood": "minecraft:block/stripped_oak_log",
+    "leg": "minecraft:block/oak_planks"
+  },
+  "elements": [
+    {
+      "from": [0, 12, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "up": {"uv": [0, 0, 16, 16], "texture": "#top"},
+        "down": {"uv": [0, 0, 16, 16], "texture": "#wood"},
+        "north": {"uv": [0, 12, 16, 16], "texture": "#wood"},
+        "south": {"uv": [0, 12, 16, 16], "texture": "#wood"},
+        "west": {"uv": [0, 12, 16, 16], "texture": "#wood"},
+        "east": {"uv": [0, 12, 16, 16], "texture": "#wood"}
+      }
+    },
+    {
+      "from": [1, 0, 1],
+      "to": [4, 12, 4],
+      "faces": {
+        "down": {"uv": [1, 1, 4, 4], "texture": "#leg"},
+        "north": {"uv": [1, 4, 4, 16], "texture": "#leg"},
+        "south": {"uv": [1, 4, 4, 16], "texture": "#leg"},
+        "west": {"uv": [1, 4, 4, 16], "texture": "#leg"},
+        "east": {"uv": [1, 4, 4, 16], "texture": "#leg"}
+      }
+    },
+    {
+      "from": [12, 0, 1],
+      "to": [15, 12, 4],
+      "faces": {
+        "down": {"uv": [12, 1, 15, 4], "texture": "#leg"},
+        "north": {"uv": [12, 4, 15, 16], "texture": "#leg"},
+        "south": {"uv": [12, 4, 15, 16], "texture": "#leg"},
+        "west": {"uv": [1, 4, 4, 16], "texture": "#leg"},
+        "east": {"uv": [1, 4, 4, 16], "texture": "#leg"}
+      }
+    },
+    {
+      "from": [1, 0, 12],
+      "to": [4, 12, 15],
+      "faces": {
+        "down": {"uv": [1, 12, 4, 15], "texture": "#leg"},
+        "north": {"uv": [1, 4, 4, 16], "texture": "#leg"},
+        "south": {"uv": [1, 4, 4, 16], "texture": "#leg"},
+        "west": {"uv": [12, 4, 15, 16], "texture": "#leg"},
+        "east": {"uv": [12, 4, 15, 16], "texture": "#leg"}
+      }
+    },
+    {
+      "from": [12, 0, 12],
+      "to": [15, 12, 15],
+      "faces": {
+        "down": {"uv": [12, 12, 15, 15], "texture": "#leg"},
+        "north": {"uv": [12, 4, 15, 16], "texture": "#leg"},
+        "south": {"uv": [12, 4, 15, 16], "texture": "#leg"},
+        "west": {"uv": [12, 4, 15, 16], "texture": "#leg"},
+        "east": {"uv": [12, 4, 15, 16], "texture": "#leg"}
+      }
+    }
+  ]
+}

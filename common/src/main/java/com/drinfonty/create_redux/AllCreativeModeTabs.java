@@ -39,11 +39,18 @@ public class AllCreativeModeTabs {
 						if (AllBlocks.LARGE_BOGEY != null) output.accept(AllBlocks.LARGE_BOGEY.get());
 						if (AllBlocks.TRACK_STATION != null) output.accept(AllBlocks.TRACK_STATION.get());
 						if (AllBlocks.TRACK_SIGNAL != null) output.accept(AllBlocks.TRACK_SIGNAL.get());
+						if (AllBlocks.SCHEMATIC_TABLE != null) output.accept(AllBlocks.SCHEMATIC_TABLE.get());
+						if (AllBlocks.SCHEMATICANNON != null) output.accept(AllBlocks.SCHEMATICANNON.get());
+						if (AllItems.EMPTY_SCHEMATIC != null) output.accept(AllItems.EMPTY_SCHEMATIC.get());
+						if (AllItems.SCHEMATIC_AND_QUILL != null) output.accept(AllItems.SCHEMATIC_AND_QUILL.get());
+						if (AllItems.SCHEMATIC != null) output.accept(AllItems.SCHEMATIC.get());
+						if (AllItems.HANDHELD_WORLDSHAPER != null) output.accept(AllItems.HANDHELD_WORLDSHAPER.get());
+						if (AllItems.SYMMETRY_WAND != null) output.accept(AllItems.SYMMETRY_WAND.get());
 					})
 					.build()
 	);
 
 	public static void register() {
-		// triggers static initialization
+		AllItems.register();
 	}
 }
