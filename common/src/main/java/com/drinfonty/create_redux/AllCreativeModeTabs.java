@@ -34,6 +34,11 @@ public class AllCreativeModeTabs {
 						if (AllBlocks.FLUID_TANK != null) output.accept(AllBlocks.FLUID_TANK.get());
 						if (AllBlocks.SPOUT != null) output.accept(AllBlocks.SPOUT.get());
 						if (AllBlocks.HOSE_PULLEY != null) output.accept(AllBlocks.HOSE_PULLEY.get());
+						if (AllBlocks.TRACK != null) output.accept(AllBlocks.TRACK.get());
+						if (AllBlocks.SMALL_BOGEY != null) output.accept(AllBlocks.SMALL_BOGEY.get());
+						if (AllBlocks.LARGE_BOGEY != null) output.accept(AllBlocks.LARGE_BOGEY.get());
+						if (AllBlocks.TRACK_STATION != null) output.accept(AllBlocks.TRACK_STATION.get());
+						if (AllBlocks.TRACK_SIGNAL != null) output.accept(AllBlocks.TRACK_SIGNAL.get());
 					})
 					.build()
 	);

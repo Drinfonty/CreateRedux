@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "facing=north,state=green": {
+      "model": "create:block/track_signal_green"
+    },
+    "facing=south,state=green": {
+      "model": "create:block/track_signal_green",
+      "y": 180
+    },
+    "facing=west,state=green": {
+      "model": "create:block/track_signal_green",
+      "y": 270
+    },
+    "facing=east,state=green": {
+      "model": "create:block/track_signal_green",
+      "y": 90
+    },
+    "facing=north,state=yellow": {
+      "model": "create:block/track_signal_yellow"
+    },
+    "facing=south,state=yellow": {
+      "model": "create:block/track_signal_yellow",
+      "y": 180
+    },
+    "facing=west,state=yellow": {
+      "model": "create:block/track_signal_yellow",
+      "y": 270
+    },
+    "facing=east,state=yellow": {
+      "model": "create:block/track_signal_yellow",
+      "y": 90
+    },
+    "facing=north,state=red": {
+      "model": "create:block/track_signal_red"
+    },
+    "facing=south,state=red": {
+      "model": "create:block/track_signal_red",
+      "y": 180
+    },
+    "facing=west,state=red": {
+      "model": "create:block/track_signal_red",
+      "y": 270
+    },
+    "facing=east,state=red": {
+      "model": "create:block/track_signal_red",
+      "y": 90
+    }
+  }
+}

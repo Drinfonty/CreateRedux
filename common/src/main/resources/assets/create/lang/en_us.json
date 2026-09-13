@@ -19,5 +19,10 @@
   "block.create.mechanical_pump": "Mechanical Pump",
   "block.create.fluid_tank": "Fluid Tank",
   "block.create.spout": "Spout",
-  "block.create.hose_pulley": "Hose Pulley"
+  "block.create.hose_pulley": "Hose Pulley",
+  "block.create.track": "Train Track",
+  "block.create.small_bogey": "Small Train Bogey",
+  "block.create.large_bogey": "Large Train Bogey",
+  "block.create.track_station": "Train Station",
+  "block.create.track_signal": "Train Signal"
 }
