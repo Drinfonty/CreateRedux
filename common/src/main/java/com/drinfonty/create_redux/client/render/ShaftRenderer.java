@@ -7,24 +7,16 @@ import com.drinfonty.create_redux.content.kinetics.KineticBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.block.model.BlockDisplayContext;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
+import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.core.Direction;
 import net.minecraft.world.phys.Vec3;
 
 public class ShaftRenderer<T extends KineticBlockEntity> implements BlockEntityRenderer<T, KineticRenderState> {
-	private final BlockModelResolver blockModelResolver;
-	private final BlockModelRenderState modelRenderState = new BlockModelRenderState();
-	private final BlockDisplayContext displayContext = BlockDisplayContext.create();
-
 	public ShaftRenderer(BlockEntityRendererProvider.Context context) {
-		this.blockModelResolver = context.blockModelResolver();
 	}
 
 	@Override
@@ -63,9 +55,7 @@ public class ShaftRenderer<T extends KineticBlockEntity> implements BlockEntityR
 		}
 		poseStack.translate(-0.5, -0.5, -0.5);
 
-		modelRenderState.clear();
-		blockModelResolver.update(modelRenderState, state.blockState, displayContext);
-		modelRenderState.submit(poseStack, collector, state.lightCoords, 0, 0);
+		collector.submitBlock(poseStack, state.blockState, state.lightCoords, 0, 0);
 
 		poseStack.popPose();
 	}

@@ -7,27 +7,19 @@ import com.drinfonty.create_redux.content.kinetics.belt.BeltBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.block.model.BlockDisplayContext;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
+import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.core.Direction;
 import net.minecraft.world.phys.Vec3;
 
 /**
- * CPU fallback renderer for conveyor belts and internal pulleys.
+ * CPU fallback renderer for conveyor belts and internal pulleys on 1.21.11.
  */
 public class BeltRenderer implements BlockEntityRenderer<BeltBlockEntity, BeltRenderState> {
-	private final BlockModelResolver blockModelResolver;
-	private final BlockModelRenderState modelRenderState = new BlockModelRenderState();
-	private final BlockDisplayContext displayContext = BlockDisplayContext.create();
-
 	public BeltRenderer(BlockEntityRendererProvider.Context context) {
-		this.blockModelResolver = context.blockModelResolver();
 	}
 
 	@Override
@@ -52,16 +44,13 @@ public class BeltRenderer implements BlockEntityRenderer<BeltBlockEntity, BeltRe
 	public void submit(BeltRenderState state, PoseStack poseStack, SubmitNodeCollector collector, CameraRenderState cameraRenderState) {
 		if (state.blockState == null) return;
 		if (VisualManager.isInstanced(state.blockPos)) {
-			// Flywheel visual handles this; skip CPU fallback
 			return;
 		}
 
 		poseStack.pushPose();
 
 		// Submit belt casing/housing model
-		modelRenderState.clear();
-		blockModelResolver.update(modelRenderState, state.blockState, displayContext);
-		modelRenderState.submit(poseStack, collector, state.lightCoords, 0, 0);
+		collector.submitBlock(poseStack, state.blockState, state.lightCoords, 0, 0);
 
 		// Render internal pulley shaft rotation
 		poseStack.pushPose();
@@ -72,7 +61,6 @@ public class BeltRenderer implements BlockEntityRenderer<BeltBlockEntity, BeltRe
 			poseStack.mulPose(Axis.ZP.rotationDegrees(state.pulleyAngle));
 		}
 		poseStack.translate(-0.5, -0.5, -0.5);
-		// Pulley model submitted inside pose
 		poseStack.popPose();
 
 		poseStack.popPose();
