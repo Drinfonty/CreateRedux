@@ -140,6 +140,16 @@ public class AllBlocks {
 			props -> new com.drinfonty.create_redux.content.trains.signal.TrackSignalBlock(props.strength(2.0f).sound(SoundType.METAL).noOcclusion())
 	);
 
+	public static final RegistryEntry<com.drinfonty.create_redux.content.schematics.table.SchematicTableBlock> SCHEMATIC_TABLE = CreateRegistrate.registerBlock(
+			"schematic_table",
+			props -> new com.drinfonty.create_redux.content.schematics.table.SchematicTableBlock(props.strength(2.0f).sound(SoundType.WOOD).noOcclusion())
+	);
+
+	public static final RegistryEntry<com.drinfonty.create_redux.content.schematics.cannon.SchematicannonBlock> SCHEMATICANNON = CreateRegistrate.registerBlock(
+			"schematicannon",
+			props -> new com.drinfonty.create_redux.content.schematics.cannon.SchematicannonBlock(props.strength(3.5f).sound(SoundType.METAL).noOcclusion())
+	);
+
 	public static void register() {
 		KineticStressRegistry.registerCapacity(HAND_CRANK.get(), 256.0f);
 		KineticStressRegistry.registerCapacity(WATER_WHEEL.get(), 256.0f);
