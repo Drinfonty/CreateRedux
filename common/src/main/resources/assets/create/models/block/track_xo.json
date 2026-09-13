@@ -1,0 +1,57 @@
+{
+  "textures": {
+    "particle": "minecraft:block/iron_block",
+    "rail": "minecraft:block/iron_block",
+    "tie": "minecraft:block/smooth_stone"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 2],
+      "to": [16, 2, 4],
+      "faces": {
+        "up": {"uv": [0, 2, 16, 4], "texture": "#rail"},
+        "down": {"uv": [0, 2, 16, 4], "texture": "#rail"},
+        "west": {"uv": [2, 0, 4, 2], "texture": "#rail"},
+        "east": {"uv": [2, 0, 4, 2], "texture": "#rail"},
+        "north": {"uv": [0, 0, 16, 2], "texture": "#rail"},
+        "south": {"uv": [0, 0, 16, 2], "texture": "#rail"}
+      }
+    },
+    {
+      "from": [0, 0, 12],
+      "to": [16, 2, 14],
+      "faces": {
+        "up": {"uv": [0, 12, 16, 14], "texture": "#rail"},
+        "down": {"uv": [0, 12, 16, 14], "texture": "#rail"},
+        "west": {"uv": [12, 0, 14, 2], "texture": "#rail"},
+        "east": {"uv": [12, 0, 14, 2], "texture": "#rail"},
+        "north": {"uv": [0, 0, 16, 2], "texture": "#rail"},
+        "south": {"uv": [0, 0, 16, 2], "texture": "#rail"}
+      }
+    },
+    {
+      "from": [2, 0, 1],
+      "to": [6, 1, 15],
+      "faces": {
+        "up": {"uv": [2, 1, 6, 15], "texture": "#tie"},
+        "down": {"uv": [2, 1, 6, 15], "texture": "#tie"},
+        "west": {"uv": [1, 0, 15, 1], "texture": "#tie"},
+        "east": {"uv": [1, 0, 15, 1], "texture": "#tie"},
+        "north": {"uv": [2, 0, 6, 1], "texture": "#tie"},
+        "south": {"uv": [2, 0, 6, 1], "texture": "#tie"}
+      }
+    },
+    {
+      "from": [10, 0, 1],
+      "to": [14, 1, 15],
+      "faces": {
+        "up": {"uv": [10, 1, 14, 15], "texture": "#tie"},
+        "down": {"uv": [10, 1, 14, 15], "texture": "#tie"},
+        "west": {"uv": [1, 0, 15, 1], "texture": "#tie"},
+        "east": {"uv": [1, 0, 15, 1], "texture": "#tie"},
+        "north": {"uv": [10, 0, 14, 1], "texture": "#tie"},
+        "south": {"uv": [10, 0, 14, 1], "texture": "#tie"}
+      }
+    }
+  ]
+}

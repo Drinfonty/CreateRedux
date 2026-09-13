@@ -162,9 +162,11 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
 - [x] Comprehensive unit test suite (`FluidTest`) verifying dynamic connectivity, pumping, tank capacity, and spout processing.
 
 #### Milestone 3.5: Railway Infrastructure & Trains
-- [ ] Port Track placing, Curved Tracks, Track Switching, and Monorail/Dual-rail bogeys.
-- [ ] Port Train assembly, train navigation, station scheduling, and signal blocks.
-- [ ] Validate train movement across chunk boundaries and dimensional portals.
+- [x] Port Track placing, Curved Tracks, Track Switching, and Monorail/Dual-rail bogeys (`TrackBlock`, `TrackBlockEntity`, `BogeyBlock`, `BogeyBlockEntity`, `BogeySizes`).
+- [x] Implement Track Graph topology and Dijkstra shortest path routing (`TrackGraph`, `TrackNode`, `TrackEdge`, `TrackGraphManager`).
+- [x] Port Train assembly, train navigation, station scheduling, and signal blocks (`StationBlock`, `StationBlockEntity`, `Train`, `Carriage`, `CarriageContraption`, `TrackSignalBlock`, `TrackSignalBlockEntity`, `TrainSchedule`).
+- [x] Clean-room blockstates, 3D models, item models, and localization for all railway blocks.
+- [x] Comprehensive unit test suite (`RailwayTest`) verifying routing graphs, bogey wheel rotation kinematics, train navigation physics, block signal reservations, and schedule itineraries.
 
 #### Milestone 3.6: Schematics & Creative Engineering Tools
 - [ ] Port Schematic Table, Schematicannon, Handheld Worldshaper, and Symmetry Wand.

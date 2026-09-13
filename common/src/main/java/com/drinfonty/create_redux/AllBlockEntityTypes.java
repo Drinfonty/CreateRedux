@@ -109,6 +109,30 @@ public class AllBlockEntityTypes {
 			() -> new Block[]{AllBlocks.HOSE_PULLEY.get()}
 	);
 
+	public static final RegistryEntry<BlockEntityType<com.drinfonty.create_redux.content.trains.track.TrackBlockEntity>> TRACK = CreateRegistrate.registerBlockEntityType(
+			"track",
+			com.drinfonty.create_redux.content.trains.track.TrackBlockEntity::new,
+			() -> new Block[]{AllBlocks.TRACK.get()}
+	);
+
+	public static final RegistryEntry<BlockEntityType<com.drinfonty.create_redux.content.trains.bogey.BogeyBlockEntity>> BOGEY = CreateRegistrate.registerBlockEntityType(
+			"bogey",
+			com.drinfonty.create_redux.content.trains.bogey.BogeyBlockEntity::new,
+			() -> new Block[]{AllBlocks.SMALL_BOGEY.get(), AllBlocks.LARGE_BOGEY.get()}
+	);
+
+	public static final RegistryEntry<BlockEntityType<com.drinfonty.create_redux.content.trains.station.StationBlockEntity>> TRACK_STATION = CreateRegistrate.registerBlockEntityType(
+			"track_station",
+			com.drinfonty.create_redux.content.trains.station.StationBlockEntity::new,
+			() -> new Block[]{AllBlocks.TRACK_STATION.get()}
+	);
+
+	public static final RegistryEntry<BlockEntityType<com.drinfonty.create_redux.content.trains.signal.TrackSignalBlockEntity>> TRACK_SIGNAL = CreateRegistrate.registerBlockEntityType(
+			"track_signal",
+			com.drinfonty.create_redux.content.trains.signal.TrackSignalBlockEntity::new,
+			() -> new Block[]{AllBlocks.TRACK_SIGNAL.get()}
+	);
+
 	public static void register() {
 		// triggers classloading
 	}

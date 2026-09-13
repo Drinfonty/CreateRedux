@@ -1,0 +1,55 @@
+{
+  "textures": {
+    "particle": "minecraft:block/netherite_block",
+    "chassis": "minecraft:block/netherite_block",
+    "wheel": "minecraft:block/iron_block"
+  },
+  "elements": [
+    {
+      "from": [3, 8, 1],
+      "to": [13, 16, 15],
+      "faces": {
+        "up": {"uv": [3, 1, 13, 15], "texture": "#chassis"},
+        "down": {"uv": [3, 1, 13, 15], "texture": "#chassis"},
+        "north": {"uv": [3, 8, 13, 16], "texture": "#chassis"},
+        "south": {"uv": [3, 8, 13, 16], "texture": "#chassis"},
+        "west": {"uv": [1, 8, 15, 16], "texture": "#chassis"},
+        "east": {"uv": [1, 8, 15, 16], "texture": "#chassis"}
+      }
+    },
+    {
+      "from": [1, 0, 1],
+      "to": [3, 16, 15],
+      "faces": {
+        "up": {"uv": [1, 1, 3, 15], "texture": "#wheel"},
+        "down": {"uv": [1, 1, 3, 15], "texture": "#wheel"},
+        "north": {"uv": [1, 0, 3, 16], "texture": "#wheel"},
+        "south": {"uv": [1, 0, 3, 16], "texture": "#wheel"},
+        "west": {"uv": [1, 0, 15, 16], "texture": "#wheel"},
+        "east": {"uv": [1, 0, 15, 16], "texture": "#wheel"}
+      }
+    },
+    {
+      "from": [13, 0, 1],
+      "to": [15, 16, 15],
+      "faces": {
+        "up": {"uv": [13, 1, 15, 15], "texture": "#wheel"},
+        "down": {"uv": [13, 1, 15, 15], "texture": "#wheel"},
+        "north": {"uv": [13, 0, 15, 16], "texture": "#wheel"},
+        "south": {"uv": [13, 0, 15, 16], "texture": "#wheel"},
+        "west": {"uv": [1, 0, 15, 16], "texture": "#wheel"},
+        "east": {"uv": [1, 0, 15, 16], "texture": "#wheel"}
+      }
+    },
+    {
+      "from": [3, 7, 7],
+      "to": [13, 9, 9],
+      "faces": {
+        "up": {"uv": [3, 7, 13, 9], "texture": "#wheel"},
+        "down": {"uv": [3, 7, 13, 9], "texture": "#wheel"},
+        "north": {"uv": [3, 7, 13, 9], "texture": "#wheel"},
+        "south": {"uv": [3, 7, 13, 9], "texture": "#wheel"}
+      }
+    }
+  ]
+}
