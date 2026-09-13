@@ -20,6 +20,7 @@ public abstract class KineticBlockEntity extends BlockEntity {
 	protected float stress = 0.0f;
 	protected boolean overStressed = false;
 	protected float clientAngle = 0.0f;
+	protected float rotationOffset = 0.0f;
 
 	public KineticBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
@@ -111,6 +112,14 @@ public abstract class KineticBlockEntity extends BlockEntity {
 
 	public float getClientAngle() {
 		return clientAngle;
+	}
+
+	public float getRotationOffset() {
+		return rotationOffset;
+	}
+
+	public void setRotationOffset(float offset) {
+		this.rotationOffset = offset;
 	}
 
 	@Override

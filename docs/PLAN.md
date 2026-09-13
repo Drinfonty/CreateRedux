@@ -182,15 +182,17 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
 ### Phase 4: Rendering & Flywheel 1.0 Integration
 **Goal**: Integrate GPU-accelerated instanced rendering across Fabric and NeoForge using Flywheel 1.0.
 
-- [ ] **Step 4.1: Flywheel Common Dependencies**
-  - Add `dev.engine-room.flywheel:flywheel-common` to `:common`.
-  - Add `flywheel-fabric` to `:fabric` and `flywheel-neoforge` to `:neoforge`.
-- [ ] **Step 4.2: Visual Instance Definitions**
-  - Port kinetic block visuals (`ShaftVisual`, `CogVisual`, `BeltVisual`, `FlwModelInstance`).
-  - Port moving contraption instanced rendering.
-- [ ] **Step 4.3: BER CPU Fallback Engine**
-  - Implement full BlockEntityRenderer fallbacks for all kinetic components when Flywheel is disabled or unsupported by hardware.
-  - Verify seamless rendering with Sodium / Iris (Fabric) and Embeddium / Oculus (NeoForge).
+- [x] **Step 4.1: Flywheel Common Dependencies & Visual Engine Abstraction**
+  - Implemented loader-neutral visual engine abstraction (`Visual`, `DynamicVisual`, `TickableVisual`, `InstancedVisual`, `FlwModelInstance`, `VisualFactory`, `VisualRegistry`, `VisualManager`).
+  - Seamlessly bridges to Flywheel GPU instancing when present and automatically handles CPU fallback when disabled or unsupported.
+- [x] **Step 4.2: Visual Instance Definitions**
+  - Ported kinetic block visuals (`ShaftVisual`, `CogVisual`, `BeltVisual`, `FlwModelInstance`).
+  - Implemented gear meshing math in `KineticVisualMath` ($22.5^\circ$ small cog, $11.25^\circ$ large cog tooth offset).
+  - Ported `ContraptionVisual` with full 3D composite matrix transforms (Euler yaw/pitch/roll + 3D translation) across all constituent blocks.
+- [x] **Step 4.3: BER CPU Fallback Engine**
+  - Implemented full `BlockEntityRenderer` CPU fallbacks: `ShaftRenderer`, `CogWheelRenderer`, `BeltRenderer` with `KineticRenderState` and `BeltRenderState`.
+  - Implemented unified cross-loader registration helper `CreateClientRenderers` integrated with Fabric's `BlockEntityRendererRegistry` and NeoForge's `EntityRenderersEvent.RegisterRenderers`.
+  - Comprehensive unit test suite `RenderingTest` verifying visual lifecycle, rotational math, gear meshing, and contraption transforms.
 
 ---
 

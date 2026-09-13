@@ -9,5 +9,6 @@ public class CreateNeoForge {
 	public CreateNeoForge(IEventBus modEventBus) {
 		NeoForgeRegistryHelper.init(modEventBus);
 		Create.init();
+		CreateNeoForgeClient.init(modEventBus);
 	}
 }
