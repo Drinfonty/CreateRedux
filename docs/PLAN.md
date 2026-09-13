@@ -169,8 +169,13 @@ This plan details the step-by-step execution to port **Create** to modern Minecr
 - [x] Comprehensive unit test suite (`RailwayTest`) verifying routing graphs, bogey wheel rotation kinematics, train navigation physics, block signal reservations, and schedule itineraries.
 
 #### Milestone 3.6: Schematics & Creative Engineering Tools
-- [ ] Port Schematic Table, Schematicannon, Handheld Worldshaper, and Symmetry Wand.
-- [ ] Ensure NBT / component schematic file compatibility across both platforms.
+- [x] Implement `Schematic` data structure with block palettes, block entities, dimensions, and cross-version NBT serialization via `NbtCompat`.
+- [x] Implement `SchematicPrinter` layer-by-layer traversal engine and bill-of-materials calculation.
+- [x] Port Schematic Table (`SchematicTableBlock`, `SchematicTableBlockEntity`) for blueprint drafting and file binding.
+- [x] Port Schematicannon (`SchematicannonBlock`, `SchematicannonBlockEntity`) with gunpowder fuel mechanics, ballistics aiming math (yaw/pitch), and autonomous block placement.
+- [x] Port Creative Engineering Tools: `HandheldWorldshaperItem` (cuboid, sphere, cylinder, replace brushes), `SymmetryWandItem` (plane, cross, triple mirror reflection math), `EmptySchematicItem`, `SchematicAndQuillItem`, and `SchematicItem`.
+- [x] Clean-room blockstates, 3D block models, and item models for all schematic components.
+- [x] Comprehensive unit test suite (`SchematicTest`) verifying NBT roundtrip, printer traversal, gunpowder consumption, worldshaper brush geometry, and symmetry reflections.
 
 ---
 

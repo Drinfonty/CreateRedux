@@ -24,5 +24,12 @@
   "block.create.small_bogey": "Small Train Bogey",
   "block.create.large_bogey": "Large Train Bogey",
   "block.create.track_station": "Train Station",
-  "block.create.track_signal": "Train Signal"
+  "block.create.track_signal": "Train Signal",
+  "block.create.schematic_table": "Schematic Table",
+  "block.create.schematicannon": "Schematicannon",
+  "item.create.empty_schematic": "Empty Schematic",
+  "item.create.schematic_and_quill": "Schematic and Quill",
+  "item.create.schematic": "Schematic",
+  "item.create.handheld_worldshaper": "Worldshaper",
+  "item.create.symmetry_wand": "Wand of Symmetry"
 }

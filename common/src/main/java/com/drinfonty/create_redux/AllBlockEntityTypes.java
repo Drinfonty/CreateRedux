@@ -133,6 +133,18 @@ public class AllBlockEntityTypes {
 			() -> new Block[]{AllBlocks.TRACK_SIGNAL.get()}
 	);
 
+	public static final RegistryEntry<BlockEntityType<com.drinfonty.create_redux.content.schematics.table.SchematicTableBlockEntity>> SCHEMATIC_TABLE = CreateRegistrate.registerBlockEntityType(
+			"schematic_table",
+			com.drinfonty.create_redux.content.schematics.table.SchematicTableBlockEntity::new,
+			() -> new Block[]{AllBlocks.SCHEMATIC_TABLE.get()}
+	);
+
+	public static final RegistryEntry<BlockEntityType<com.drinfonty.create_redux.content.schematics.cannon.SchematicannonBlockEntity>> SCHEMATICANNON = CreateRegistrate.registerBlockEntityType(
+			"schematicannon",
+			com.drinfonty.create_redux.content.schematics.cannon.SchematicannonBlockEntity::new,
+			() -> new Block[]{AllBlocks.SCHEMATICANNON.get()}
+	);
+
 	public static void register() {
 		// triggers classloading
 	}
