@@ -1,0 +1,38 @@
+{
+  "variants": {
+    "has_bezier=false,shape=xo": {
+      "model": "create:block/track_xo"
+    },
+    "has_bezier=false,shape=zo": {
+      "model": "create:block/track_zo"
+    },
+    "has_bezier=false,shape=pd": {
+      "model": "create:block/track_zo",
+      "y": 45
+    },
+    "has_bezier=false,shape=nd": {
+      "model": "create:block/track_zo",
+      "y": 135
+    },
+    "has_bezier=false,shape=cr_o": {
+      "model": "create:block/track_xo"
+    },
+    "has_bezier=true,shape=xo": {
+      "model": "create:block/track_xo"
+    },
+    "has_bezier=true,shape=zo": {
+      "model": "create:block/track_zo"
+    },
+    "has_bezier=true,shape=pd": {
+      "model": "create:block/track_zo",
+      "y": 45
+    },
+    "has_bezier=true,shape=nd": {
+      "model": "create:block/track_zo",
+      "y": 135
+    },
+    "has_bezier=true,shape=cr_o": {
+      "model": "create:block/track_xo"
+    }
+  }
+}

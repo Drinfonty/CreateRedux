@@ -115,6 +115,31 @@ public class AllBlocks {
 			props -> new com.drinfonty.create_redux.content.fluids.hosePulley.HosePulleyBlock(props.strength(2.0f).sound(SoundType.COPPER).noOcclusion())
 	);
 
+	public static final RegistryEntry<com.drinfonty.create_redux.content.trains.track.TrackBlock> TRACK = CreateRegistrate.registerBlock(
+			"track",
+			props -> new com.drinfonty.create_redux.content.trains.track.TrackBlock(props.strength(1.5f).sound(SoundType.METAL).noOcclusion())
+	);
+
+	public static final RegistryEntry<com.drinfonty.create_redux.content.trains.bogey.BogeyBlock> SMALL_BOGEY = CreateRegistrate.registerBlock(
+			"small_bogey",
+			props -> new com.drinfonty.create_redux.content.trains.bogey.BogeyBlock(props.strength(2.5f).sound(SoundType.NETHERITE_BLOCK).noOcclusion(), com.drinfonty.create_redux.content.trains.bogey.BogeySizes.SMALL)
+	);
+
+	public static final RegistryEntry<com.drinfonty.create_redux.content.trains.bogey.BogeyBlock> LARGE_BOGEY = CreateRegistrate.registerBlock(
+			"large_bogey",
+			props -> new com.drinfonty.create_redux.content.trains.bogey.BogeyBlock(props.strength(3.0f).sound(SoundType.NETHERITE_BLOCK).noOcclusion(), com.drinfonty.create_redux.content.trains.bogey.BogeySizes.LARGE)
+	);
+
+	public static final RegistryEntry<com.drinfonty.create_redux.content.trains.station.StationBlock> TRACK_STATION = CreateRegistrate.registerBlock(
+			"track_station",
+			props -> new com.drinfonty.create_redux.content.trains.station.StationBlock(props.strength(3.0f).sound(SoundType.METAL).noOcclusion())
+	);
+
+	public static final RegistryEntry<com.drinfonty.create_redux.content.trains.signal.TrackSignalBlock> TRACK_SIGNAL = CreateRegistrate.registerBlock(
+			"track_signal",
+			props -> new com.drinfonty.create_redux.content.trains.signal.TrackSignalBlock(props.strength(2.0f).sound(SoundType.METAL).noOcclusion())
+	);
+
 	public static void register() {
 		KineticStressRegistry.registerCapacity(HAND_CRANK.get(), 256.0f);
 		KineticStressRegistry.registerCapacity(WATER_WHEEL.get(), 256.0f);
